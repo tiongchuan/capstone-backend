@@ -11,8 +11,8 @@ import userModel from "./user.model.js"
 import viewEnrollmentModel from "./viewEnrollment.model.js"
 
 // Heroku DB Connection Configuration
-const sequelize = new Sequelize("d3h7qubveh7v55", "oglzwpqmpzdpif", "b3653cf05bb38c386c12ebc0f6f5bb6f666ded86e691e21fd8f5085d28d1968d", {
-  host: "ec2-3-217-14-181.compute-1.amazonaws.com",
+const sequelize = new Sequelize("d6ssqv6hf7qldc", "rwxbhhdsdaevnd", "27842a83c6ad07b613d334a6a42a9093cd976ae0938c72292e3a96fc6d97b54f", {
+  host: "ec2-34-199-68-114.compute-1.amazonaws.com",
   dialect: "postgres",
   dialectOptions: {
     ssl: {
@@ -29,9 +29,9 @@ async function testConnection() {
       await sequelize.authenticate();
       console.log("Connection has been established successfully.");
 
-      // // Synchronizing all models at once
-      // await sequelize.sync();
-      // console.log("All models were synchronized successfully.");
+      // Synchronizing all models at once
+      await sequelize.sync();
+      console.log("All models were synchronized successfully.");
 
       // // Drop all tables
       // await sequelize.drop();
