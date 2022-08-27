@@ -41,6 +41,11 @@ export default function (sequelize) {
                 allowNull: false,
                 field: "latest_score",
             },
+            bookingTime: {
+                type: DataTypes.TIME,
+                allowNull: false,
+                field: "booking_time"
+            }
         
         },
         {

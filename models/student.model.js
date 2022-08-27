@@ -26,10 +26,10 @@ export default function (sequelize) {
                 allowNull: false,
                 field: "parent",
             },
-            testimony: {
+            remarks: {
                 type: DataTypes.TEXT,
                 allowNull: false,
-                field: "testimony",
+                field: "remarks",
             },
         },
         {

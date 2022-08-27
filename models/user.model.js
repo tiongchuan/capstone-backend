@@ -25,7 +25,7 @@ export default function (sequelize) {
       },
       role: {
         type: DataTypes.STRING(20),
-        //allowNull: false,
+        allowNull: false,
         defaultValue: "USER",
         field: "role"
       }
@@ -33,7 +33,7 @@ export default function (sequelize) {
     },
     {
       sequelize,
-      timestamps: false,  // turn off timestamps creation.
+      timestamps: true,  // turn on timestamps creation.
       modelName: "User",
       tableName: "users",
     }

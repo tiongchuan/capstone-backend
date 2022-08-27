@@ -11,6 +11,11 @@ export default function (sequelize) {
                 primaryKey: true,
                 autoIncrement: true,
             },
+            subjectId: {
+                type: DataTypes.INTEGER,
+                allowNull: false,
+                field: "subject_id",
+            },
             name: {
                 type: DataTypes.STRING,
                 allowNull: false,
@@ -30,6 +35,16 @@ export default function (sequelize) {
                 type: DataTypes.FLOAT,
                 allowNull: false,
                 field: "hourly_rate",
+            },
+            rating: {
+                type: DataTypes.FLOAT,
+                allowNull: false,
+                field: "rating",
+            },
+            testimony: {
+                type: DataTypes.TEXT,
+                allowNull: false,
+                field: "testimony",
             },
         },
         {

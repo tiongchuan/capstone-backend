@@ -41,7 +41,7 @@ async function getTutors() {
     return result;
 }
 
-async function updateTutor(tutorId, name, experience, highestEducation, hourlyRate) {
+async function updateTutor(tutorId, subjectId, name, experience, highestEducation, hourlyRate, rating, testimony) {
 
     let result = {
         message: null,
@@ -58,9 +58,12 @@ async function updateTutor(tutorId, name, experience, highestEducation, hourlyRa
     }
 
     tutor.name = name;
+    tutor.subjectId = subjectId;
     tutor.experience = experience;
     tutor.highestEducation = highestEducation;
     tutor.hourlyRate = hourlyRate;
+    tutor.rating = rating;
+    tutor.testimony = testimony;
 
     await tutor.save();
     result.data = tutor;
@@ -95,7 +98,7 @@ async function deleteTutor(tutorId) {
     return result;
 }
 
-async function addTutor(name, experience, highestEducation, hourlyRate) {
+async function addTutor(subjectId, name, experience, highestEducation, hourlyRate, rating, testimony) {
 
     let result = {
         message: null,
@@ -103,7 +106,7 @@ async function addTutor(name, experience, highestEducation, hourlyRate) {
         data: null,
     };
     
-    const tutor = await Tutor.create({name, experience, highestEducation, hourlyRate});
+    const tutor = await Tutor.create({subjectId, name, experience, highestEducation, hourlyRate, rating, testimony});
 
     await tutor.save();
     result.data = tutor;

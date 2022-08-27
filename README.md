@@ -14,20 +14,20 @@ https://quiet-river-74601.herokuapp.com/
 - PUT /protected/tutor/add
 
 3. Endpoints for Students
-- GET /general/student
 - GET /general/student/:studentId
+- GET /general/students
 - POST /protected/student/update
 - DELETE /protected/student/delete/:studentId
 - PUT /protected/student/add
 
 4. Endpoints for Subjects
 - GET /general/subject/:subjectId
-- GET /general/subject
+- GET /general/subjects
 - POST /protected/subject/update
 - DELETE /protected/tutor/delete/:subjectId
 - PUT /protected/subject/add
 
-5. Edpoints for Enrollments
+5. Endpoints for Enrollments
 - GET /general/enrollment/:enrollmentId
 - GET /general/enrollments
 - GET /general/class

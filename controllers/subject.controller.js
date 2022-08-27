@@ -2,7 +2,7 @@ import { getSubject, getSubjects, updateSubject, addSubject, deleteSubject } fro
 
 class SubjectController {
 
-    // GET /general/tutor
+    // GET /general/subject
     async retrieveSubject(req, res, next) {
 
          const result = await getSubject(req.params.subjectId);    
@@ -11,7 +11,7 @@ class SubjectController {
         return res.json({ data: result.data, message: result.message });
     } 
   
-    // GET /general/tutors
+    // GET /general/subjects
     async retrieveSubjects(req, res, next) {
   
         const result = await getSubjects();    
@@ -20,7 +20,7 @@ class SubjectController {
         return res.json({ data: result.data, message: result.message });
     }  
     
-    // POST /protected/tutor/update
+    // POST /protected/subject/update
     async update(req, res, next) {
 
         if (typeof req.body.subjectId !== "number") {
@@ -35,7 +35,7 @@ class SubjectController {
         return res.json({ data: result.data, message: result.message });
     }
 
-     // DELETE /protected/tutor/delete/:tutorId
+     // DELETE /protected/subject/delete/:subjectId
     async delete(req, res, next) {
   
         const result = await deleteSubject(req.params.subjectId)
@@ -44,6 +44,7 @@ class SubjectController {
         return res.json({ data: result.data, message: result.message })
     }
     
+    // PUT /protected/subject/add
     async add (req, res, next) {
         const result = await addSubject(req.body.name, req.body.description)
         res.status(result.status)

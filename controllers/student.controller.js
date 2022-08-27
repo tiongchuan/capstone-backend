@@ -2,7 +2,7 @@ import { getStudent, getStudents, updateStudent, deleteStudent, addStudent } fro
 
 class StudentController {
 
-    // GET /general/student
+    // GET /general/student/:studentId
     async retrieveStudent(req, res, next) {
 
     const result = await getStudent(req.params.studentId);    
@@ -29,7 +29,7 @@ class StudentController {
         return res.json({ message: "Incorrect request data" });
       }
   
-      const result = await updateStudent(req.body.studentId, req.body.name, req.body.schoolId, req.body.parent, req.body.testimony);    
+      const result = await updateStudent(req.body.studentId, req.body.name, req.body.schoolId, req.body.parent, req.body.remarks);    
       res.status(result.status);
   
   
@@ -47,9 +47,8 @@ class StudentController {
 
     // PUT /protected/student/add
     async add(req, res, next) {
-ß
     
-        const result = await addStudent(req.body.name, req.body.schoolId, req.body.parent, req.body.testimony);    
+        const result = await addStudent(req.body.name, req.body.schoolId, req.body.parent, req.body.remarks);    
         res.status(result.status);
     
         return res.json({ data: result.data, message: result.message }); 
