@@ -41,7 +41,7 @@ async function getStudents() {
     return result;
 }
 
-async function updateStudent(studentId, name, schoolId, parent, testimony) {
+async function updateStudent(studentId, name, schoolId, parent, remarks) {
 
     let result = {
         message: null,
@@ -60,12 +60,12 @@ async function updateStudent(studentId, name, schoolId, parent, testimony) {
     student.name = name;
     student.schoolId = schoolId;
     student.parent = parent;
-    student.testimony = testimony;
+    student.remarks = remarks;
 
     await student.save();
     result.data = student;
     result.status = 200;
-    result.message = "Update successful";
+    result.message = "Student updated successful";
 
     return result;
 }
@@ -90,12 +90,12 @@ async function deleteStudent(studentId) {
     await student.destroy();
     result.data = student;
     result.status = 200;
-    result.message = "Delete successful";
+    result.message = "Student deleted successful";
 
     return result;
 }
 
-async function addStudent(name, schoolId, parent, testimony) {
+async function addStudent(name, schoolId, parent, remarks) {
 
     let result = {
         message: null,
@@ -103,12 +103,12 @@ async function addStudent(name, schoolId, parent, testimony) {
         data: null,
     };
     
-    const student = await Student.create({name, schoolId, parent, testimony});
+    const student = await Student.create({name, schoolId, parent, remarks});
 
     await student.save();
     result.data = student;
     result.status = 200;
-    result.message = "Add successful";
+    result.message = "Student added successful";
 
     return result;
 }

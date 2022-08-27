@@ -21,6 +21,12 @@ const sequelize = new Sequelize("d6ssqv6hf7qldc", "rwxbhhdsdaevnd", "27842a83c6a
   }
 });
 
+// // Heroku DB Connection Configuration
+// const sequelize = new Sequelize("student_db", "postgres", "", {
+//   host: "localhost",
+//   dialect: "postgres",
+// });
+
 
 // Test connection function
 async function testConnection() {
@@ -29,13 +35,13 @@ async function testConnection() {
       await sequelize.authenticate();
       console.log("Connection has been established successfully.");
 
-      // Synchronizing all models at once
-      await sequelize.sync();
-      console.log("All models were synchronized successfully.");
-
       // // Drop all tables
       // await sequelize.drop();
       // console.log("All tables dropped!");
+
+      // // Synchronizing all models at once
+      // await sequelize.sync();
+      // console.log("All models were synchronized successfully.");
 
       return true;
 
@@ -54,10 +60,11 @@ const User = userModel(sequelize);
 const viewEnrollment = viewEnrollmentModel(sequelize);
 
 
-Student.belongsTo(School,{foreignKey: "schoolId"});
-Enrollment.belongsTo(Student,{foreignKey: "studentId"});
-Enrollment.belongsTo(Tutor,{foreignKey: "tutorId"});
-Enrollment.belongsTo(Subject,{foreignKey: "subjectId"});
+Student.belongsTo(School, {foreignKey: "schoolId"});
+Tutor.belongsTo(Subject, {foreignKey: "subjectId"});
+Enrollment.belongsTo(Student, {foreignKey: "studentId"});
+Enrollment.belongsTo(Tutor, {foreignKey: "tutorId"});
+Enrollment.belongsTo(Subject, {foreignKey: "subjectId"});
 Student.hasMany(Enrollment, {foreignKey: "studentId"});
 Subject.hasMany(Enrollment, {foreignKey: "subjectId"});
 

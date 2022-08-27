@@ -22,18 +22,18 @@ const studentController = new StudentController();
 router.get("/general/tutor/:tutorId", tutorController.retrieveTutor);
 router.get("/general/subject/:subjectId", subjectController.retrieveSubject);
 router.get("/general/student/:studentId", studentController.retrieveStudent);
+router.get("/general/enrollment/:enrollmentId", enrollmentController.retrieveEnrollment);
 
 // Invoke retrieveTutors() in TutorController based on the route
 router.get("/general/tutors", tutorController.retrieveTutors);
-router.get('/general/subject', subjectController.retrieveSubjects)
-router.get("/general/student", studentController.retrieveStudents);
+router.get('/general/subjects', subjectController.retrieveSubjects)
+router.get("/general/students", studentController.retrieveStudents);
+router.get("/general/enrollments", enrollmentController.retrieveEnrollments);
 
 
-router.get("/general/enrollment/:enrollmentId",enrollmentController.retrieveEnrollment);
-router.get("/general/enrollments",enrollmentController.retrieveEnrollments);
-router.get("/general/class",enrollmentController.studentInSubject);
-router.get("/general/tutor",enrollmentController.studentToTutor);
-router.get("/general/viewEnrollment",enrollmentController.getViewEnrollment);
+router.get("/general/class", enrollmentController.studentInSubject);
+router.get("/general/tutor", enrollmentController.studentToTutor);
+router.get("/general/viewEnrollment", enrollmentController.getViewEnrollment);
 
 export default router;
 

@@ -29,7 +29,7 @@ class TutorController {
         return res.json({ message: "Incorrect request data" });
       }
   
-      const result = await updateTutor(req.body.tutorId, req.body.name, req.body.experience, req.body.highestEducation, req.body.hourlyRate);    
+      const result = await updateTutor(req.body.tutorId, req.body.subjectId, req.body.name, req.body.experience, req.body.highestEducation, req.body.hourlyRate, req.body.rating, req.body.testimony);    
       res.status(result.status);
   
   
@@ -48,7 +48,7 @@ class TutorController {
      // PUT /protected/tutor/add
     async add(req, res, next) {
 
-      const result = await addTutor(req.body.name, req.body.experience, req.body.highestEducation, req.body.hourlyRate);    
+      const result = await addTutor(req.body.subjectId, req.body.name, req.body.experience, req.body.highestEducation, req.body.hourlyRate, req.body.rating, req.body.testimony);    
       res.status(result.status);
     
       return res.json({ data: result.data, message: result.message }); 
