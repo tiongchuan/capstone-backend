@@ -3,9 +3,9 @@ import { DataTypes, Model } from "sequelize";
 
 export default function (sequelize) {
 
-    class viewenrollmentModel extends Model {}
+    class viewEnrollmentModel extends Model {}
 
-    viewenrollmentModel.init(
+    viewEnrollmentModel.init(
         {
             studentId: {
                 type: DataTypes.INTEGER,
@@ -66,10 +66,10 @@ export default function (sequelize) {
         {
             sequelize,
             timestamps: false,
-            modelName: "viewenrollment",
+            modelName: "vieweErollment",
             tableName: "viewenrollment",
         }
     );
 
-    return viewenrollmentModel;    
+    return viewEnrollmentModel;    
 };

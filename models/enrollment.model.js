@@ -42,7 +42,7 @@ export default function (sequelize) {
                 field: "latest_score",
             },
             bookingTime: {
-                type: DataTypes.STRING,
+                type: DataTypes.STRING(20),
                 allowNull: false,
                 field: "booking_time"
             }

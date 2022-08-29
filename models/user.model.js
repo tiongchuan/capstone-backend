@@ -12,6 +12,12 @@ export default function (sequelize) {
         primaryKey: true,
         autoIncrement: true
       },
+      username: {
+        type: DataTypes.STRING(50),
+        allowNull: false,
+        unique: true,
+        field: "username"
+      },
       email: {
         type: DataTypes.STRING(50),
         allowNull: false,

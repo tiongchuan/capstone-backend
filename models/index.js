@@ -22,7 +22,7 @@ const sequelize = new Sequelize("d6ssqv6hf7qldc", "rwxbhhdsdaevnd", "27842a83c6a
 });
 
 // // Heroku DB Connection Configuration
-// const sequelize = new Sequelize("student_db", "postgres", "", {
+// const sequelize = new Sequelize("student_db", "postgres", "N0op@psql", {
 //   host: "localhost",
 //   dialect: "postgres",
 // });
@@ -32,8 +32,13 @@ const sequelize = new Sequelize("d6ssqv6hf7qldc", "rwxbhhdsdaevnd", "27842a83c6a
 async function testConnection() {
     try {
 
-      await sequelize.authenticate();
-      console.log("Connection has been established successfully.");
+      await sequelize.authenticate()
+      .then( () => {
+        console.log("Connection has been established successfully.");
+      })
+      .catch( err => {
+        console.error('Unable to connect to the database:', err);
+      });
 
       // // Drop all tables
       // await sequelize.drop();
@@ -57,7 +62,7 @@ const Tutor = tutorModel(sequelize);
 const Student = studentModel(sequelize);
 const Enrollment = enrollmentModel(sequelize);
 const User = userModel(sequelize);
-const viewenrollment = viewEnrollmentModel(sequelize);
+const viewEnrollment = viewEnrollmentModel(sequelize);
 
 
 // Student.belongsTo(School, {foreignKey: "schoolId"});
@@ -78,6 +83,6 @@ export {
   Student,
   Enrollment,
   User,
-  viewenrollment
+  viewEnrollment
 };
 
