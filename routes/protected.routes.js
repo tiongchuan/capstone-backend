@@ -23,7 +23,7 @@ const enrollmentController = new EnrollmentController();
 router.post("/protected/tutor/update", tutorController.update);
 router.post("/protected/subject/update", subjectController.update);
 router.post("/protected/student/update", studentController.update);
-router.post("/protected/enrollment/:enrollmentId", enrollmentController.updateEnrollment);
+router.post("/protected/enrollment/update", enrollmentController.updateEnrollment);
 
 // Invoke delete() in TutorController based on the route
 // router.delete("/protected/tutor/delete/:tutorId", isAuth, tutorController.delete);
@@ -31,7 +31,7 @@ router.post("/protected/enrollment/:enrollmentId", enrollmentController.updateEn
 router.delete("/protected/tutor/delete/:tutorId", tutorController.delete);
 router.delete("/protected/subject/delete/:subjectId", subjectController.delete);
 router.delete("/protected/student/delete/:studentId", studentController.delete);
-router.delete("/protected/enrollment/:enrollmentId", enrollmentController.deleteEnrollment);
+router.delete("/protected/enrollment/delete/:enrollmentId", enrollmentController.deleteEnrollment);
 
 // Invoke add() in TutorController based on the route
 // router.put("/protected/tutor/add", isAuth, tutorController.add);
@@ -39,7 +39,7 @@ router.delete("/protected/enrollment/:enrollmentId", enrollmentController.delete
 router.put("/protected/tutor/add", tutorController.add);
 router.put('/protected/subject/add', subjectController.add);
 router.put("/protected/student/add", studentController.add);
-router.put("/protected/enrollment", enrollmentController.createEnrollment);
+router.put("/protected/enrollment/add", enrollmentController.createEnrollment);
 
 
 

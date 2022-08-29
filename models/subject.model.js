@@ -12,12 +12,12 @@ export default function (sequelize) {
                 autoIncrement: true,
             },
             name: {
-                type: DataTypes.STRING,
+                type: DataTypes.STRING(20),
                 allowNull: false,
                 field: "name",
             },
             description: {
-                type: DataTypes.TEXT,
+                type: DataTypes.TEXT(200),
                 allowNull: false,
                 field: "description",
             },

@@ -1,27 +1,19 @@
 
-import { Enrollment, Subject, Student, Tutor, sequelize, viewEnrollment } from "../models/index.js";
-import viewEnrollmentModel from "../models/viewEnrollment.model.js";
+import { Enrollment, viewEnrollment } from "../models/index.js";
 
 
-
-async function addEnrollment(studentId, tutorId, subjectId, comments, latestScore, enrollmentDate) {
+async function addEnrollment(studentId, tutorId, subjectId, enrollmentDate, comments, latestScore, bookingTime) {
   let result = {
     message: null,
     status: null,
     data: null,
   };
-  const enrollment = await Enrollment.create({ studentId, tutorId, subjectId, comments, latestScore, enrollmentDate });
-  enrollment.studentId = studentId;
-  enrollment.tutorId = tutorId;
-  enrollment.subjectId = subjectId;
-  enrollment.comments = comments;
-  enrollment.latestScore = latestScore;
-
+  const enrollment = await Enrollment.create({ studentId, tutorId, subjectId, enrollmentDate, comments, latestScore, bookingTime });
 
   await enrollment.save();
   result.data = enrollment;
   result.status = 200;
-  result.message = "New user is registered sucessfully";
+  result.message = "New enrollment is registered sucessfully";
   return result;
 }
 
@@ -33,7 +25,9 @@ async function getEnrollment(enrollmentId) {
     status: null,
     data: null,
   };
+
   const enrollment = await Enrollment.findByPk(enrollmentId);
+  
   if (!enrollment) {
     result.message = `Enrollment ID ${enrollmentId} is not found.`;
     result.status = 404;
@@ -58,13 +52,16 @@ async function getEnrollments() {
   return result;
 }
 
-async function updateEnrollment(enrollmentId,studentId, tutorId, subjectId, enrollmentDate, comments, latestScore ) {
+async function updateEnrollment(enrollmentId, studentId, tutorId, subjectId, enrollmentDate, comments, latestScore, bookingTime) {
+
   let result = {
     message: null,
     status: null,
     data: null,
   };
+
   const enrollment = await Enrollment.findByPk(enrollmentId);
+
   if (!enrollment) {
     result.message = `Enrollment ID ${enrollmentId} is not found.`;
     result.status = 404;
@@ -74,9 +71,12 @@ async function updateEnrollment(enrollmentId,studentId, tutorId, subjectId, enro
   enrollment.studentId = studentId;
   enrollment.tutorId = tutorId;
   enrollment.subjectId = subjectId;
+  enrollment.enrollmentDate = enrollmentDate;
   enrollment.comments = comments;
   enrollment.latestScore = latestScore;
-  enrollment.enrollmentDate = enrollmentDate;
+  enrollment.bookingTime = bookingTime;
+ 
+
   await enrollment.save();
   result.data = enrollment;
   result.status = 200;
@@ -106,39 +106,38 @@ async function deleteEnrollment(enrollmentId) {
 
 
 
-async function studentInSubject(name) {
-  let result = {
-    message: null,
-    status: null,
-    data: null,
-  };
+// async function studentInSubject(name) {
+//   let result = {
+//     message: null,
+//     status: null,
+//     data: null,
+//   };
 
-  const studentInClass = await viewEnrollment.findAll({where: {subject:name}});
-  console.log(studentInClass);
+//   const studentInClass = await viewEnrollment.findAll({where: {subject:name}});
+//   console.log(studentInClass);
 
-  result.data = JSON.stringify(studentInClass)
-  result.status = 200;
-  result.message = `Students enrolled in ${name} class`;
-  return result
-}
+//   result.data = JSON.stringify(studentInClass)
+//   result.status = 200;
+//   result.message = `Students enrolled in ${name} class`;
+//   return result
+// }
 
 
-async function studentToTutor(name) {
-  let result = {
-    message: null,
-    status: null,
-    data: null,
-  };
+// async function studentToTutor(name) {
+//   let result = {
+//     message: null,
+//     status: null,
+//     data: null,
+//   };
 
-  const studentInClass = await viewEnrollment.findAll({ where: {tutor:name}});
-  console.log(studentInClass);
+//   const studentInClass = await viewEnrollment.findAll({ where: {tutor:name}});
+//   console.log(studentInClass);
 
-  result.data = JSON.stringify(studentInClass)
-  result.status = 200;
-  result.message = `Students taught by Tutor ${name} `;
-  return result
-}
-
+//   result.data = JSON.stringify(studentInClass)
+//   result.status = 200;
+//   result.message = `Students taught by Tutor ${name} `;
+//   return result
+// }
 
 async function getViewEnrollment() {
   let result = {
@@ -152,15 +151,15 @@ async function getViewEnrollment() {
 
   result.data = JSON.stringify(test)
   result.status = 200;
-  result.message = `test1  `;
+  result.message = `Retrieve successful`;
   return result
 }
 
 
 
 export {
-  studentToTutor,
-  studentInSubject,
+  // studentToTutor,
+  // studentInSubject,
   addEnrollment,
   getEnrollment,
   getEnrollments,

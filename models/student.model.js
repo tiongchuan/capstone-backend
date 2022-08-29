@@ -12,7 +12,7 @@ export default function (sequelize) {
                 autoIncrement: true,
             },
             name: {
-                type: DataTypes.STRING,
+                type: DataTypes.STRING(20),
                 allowNull: false,
                 field: "name",
             },
@@ -22,12 +22,12 @@ export default function (sequelize) {
                 field: "school_id",
             },
             parent: {
-                type: DataTypes.STRING,
+                type: DataTypes.STRING(20),
                 allowNull: false,
                 field: "parent",
             },
             remarks: {
-                type: DataTypes.TEXT,
+                type: DataTypes.TEXT(200),
                 allowNull: false,
                 field: "remarks",
             },

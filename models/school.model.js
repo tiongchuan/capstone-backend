@@ -12,27 +12,27 @@ export default function (sequelize) {
                 autoIncrement: true,
             },
             name: {
-                type: DataTypes.STRING,
+                type: DataTypes.STRING(50),
                 allowNull: false,
                 field: "name",
             },
             area: {
-                type: DataTypes.STRING,
+                type: DataTypes.STRING(50),
                 allowNull: false,
                 field: "area",
             },
             schoolCode: {
-                type: DataTypes.STRING,
+                type: DataTypes.STRING(20),
                 allowNull: false,
                 field: "school_code",
             },
             type: {
-                type: DataTypes.STRING,
+                type: DataTypes.STRING(20),
                 allowNull: false,
                 field: "type",
             },
             funding: {
-                type: DataTypes.STRING,
+                type: DataTypes.STRING(20),
                 allowNull: false,
                 field: "funding",
             },

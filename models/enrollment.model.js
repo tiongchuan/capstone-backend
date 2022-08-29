@@ -27,12 +27,12 @@ export default function (sequelize) {
                 field: "subject_id",
             },
             enrollmentDate: {
-                type: DataTypes.DATE,
+                type: DataTypes.DATEONLY,
                 allowNull: false,
                 field: "enrollment_date",
             },
             comments: {
-                type: DataTypes.TEXT,
+                type: DataTypes.TEXT(200),
                 allowNull: false,
                 field: "comments",
             },
@@ -42,7 +42,7 @@ export default function (sequelize) {
                 field: "latest_score",
             },
             bookingTime: {
-                type: DataTypes.TIME,
+                type: DataTypes.STRING,
                 allowNull: false,
                 field: "booking_time"
             }
@@ -50,7 +50,7 @@ export default function (sequelize) {
         },
         {
             sequelize,
-            timestamps: false,
+            timestamps: true,
             modelName: "Enrollment",
             tableName: "enrollments",
         }

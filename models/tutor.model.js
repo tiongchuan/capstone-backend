@@ -17,7 +17,7 @@ export default function (sequelize) {
                 field: "subject_id",
             },
             name: {
-                type: DataTypes.STRING,
+                type: DataTypes.STRING(20),
                 allowNull: false,
                 field: "name",
             },
@@ -27,7 +27,7 @@ export default function (sequelize) {
                 field: "experience",
             },
             highestEducation: {
-                type: DataTypes.STRING,
+                type: DataTypes.STRING(20),
                 allowNull: false,
                 field: "highest_education",
             },
@@ -42,7 +42,7 @@ export default function (sequelize) {
                 field: "rating",
             },
             testimony: {
-                type: DataTypes.TEXT,
+                type: DataTypes.TEXT(200),
                 allowNull: false,
                 field: "testimony",
             },
