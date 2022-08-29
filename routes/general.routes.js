@@ -31,8 +31,8 @@ router.get("/general/students", studentController.retrieveStudents);
 router.get("/general/enrollments", enrollmentController.retrieveEnrollments);
 
 
-router.get("/general/class", enrollmentController.studentInSubject);
-router.get("/general/tutor", enrollmentController.studentToTutor);
+// router.get("/general/class", enrollmentController.studentInSubject);
+// router.get("/general/tutor", enrollmentController.studentToTutor);
 router.get("/general/viewEnrollment", enrollmentController.getViewEnrollment);
 
 export default router;

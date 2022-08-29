@@ -28,8 +28,8 @@ export default function (sequelize) {
         allowNull: false,
         defaultValue: "USER",
         field: "role"
-      }
-
+      },
+   
     },
     {
       sequelize,

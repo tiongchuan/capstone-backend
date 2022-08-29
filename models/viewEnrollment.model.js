@@ -3,9 +3,9 @@ import { DataTypes, Model } from "sequelize";
 
 export default function (sequelize) {
 
-    class viewEnrollmentModel extends Model {}
+    class viewenrollmentModel extends Model {}
 
-    viewEnrollmentModel.init(
+    viewenrollmentModel.init(
         {
             studentId: {
                 type: DataTypes.INTEGER,
@@ -13,19 +13,19 @@ export default function (sequelize) {
                 field: "id",
             },
             studentName: {
-                type: DataTypes.STRING,
+                type: DataTypes.STRING(20),
                 allowNull: false,
                 field: "student",
             },
             parentName: {
-                type: DataTypes.STRING,
+                type: DataTypes.STRING(20),
                 allowNull: false,
                 field: "parent",
             },
-            testimony: {
-                type: DataTypes.STRING,
+            remarks: {
+                type: DataTypes.STRING(200),
                 allowNull: false,
-                field: "testimony",
+                field: "remarks",
             },
             schoolId: {
                 type: DataTypes.INTEGER,
@@ -33,32 +33,32 @@ export default function (sequelize) {
                 field: "school_id",
             },
             subject: {
-                type: DataTypes.STRING,
+                type: DataTypes.STRING(20),
                 allowNull: false,
                 field: "subject",
             },
             description: {
-                type: DataTypes.TEXT,
+                type: DataTypes.TEXT(200),
                 allowNull: false,
                 field: "description",
             },
             comments: {
-                type: DataTypes.TEXT,
+                type: DataTypes.TEXT(200),
                 allowNull: false,
                 field: "comments",
             },
             latestScore: {
-                type: DataTypes.STRING,
+                type: DataTypes.STRING(10),
                 allowNull: false,
                 field: "latest_score",
             },
             enrollmentDate: {
-                type: DataTypes.DATE,
+                type: DataTypes.DATEONLY,
                 allowNull: false,
                 field: "enrollment_date",
             },
             tutor: {
-                type: DataTypes.STRING,
+                type: DataTypes.STRING(20),
                 allowNull: false,
                 field: "tutor",
             },
@@ -66,10 +66,10 @@ export default function (sequelize) {
         {
             sequelize,
             timestamps: false,
-            modelName: "viewEnrollment",
-            tableName: "viewEnrollment",
+            modelName: "viewenrollment",
+            tableName: "viewenrollment",
         }
     );
 
-    return viewEnrollmentModel;    
+    return viewenrollmentModel;    
 };
