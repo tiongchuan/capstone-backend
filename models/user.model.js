@@ -32,7 +32,7 @@ export default function (sequelize) {
       role: {
         type: DataTypes.STRING(20),
         allowNull: false,
-        defaultValue: "USER",
+        defaultValue: "user",
         field: "role"
       },
    

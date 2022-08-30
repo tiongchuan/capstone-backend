@@ -24,20 +24,21 @@ class AuthController {
 
   async register(req, res, next) {
 
+    let username = req.body.username;
     let email = req.body.email;
     let password = req.body.password;
     let role = req.body.role;
 
-    console.log(email, password);
+    console.log(username, email, password);
 
     // Check params are not empty. 
-    if (isEmpty(email) || isEmpty(password)) {
-      //throw new Error("Email or password cannot be empty!");
-      return res.status(500).json({message: "Email or password cannot be empty!"})
+    if (isEmpty(username) || isEmpty(email) || isEmpty(password)) {
+      //throw new Error("Username or email or password cannot be empty!");
+      return res.status(500).json({message: "Username or email or password cannot be empty!"})
     }
 
-    // Empty 'role' will default to 'USER".
-    const result = await _register(email, password, role);
+    // Empty 'role' will default to 'user".
+    const result = await _register(username, email, password, role);
     return res.status(result.status).json(result);
   }
 }

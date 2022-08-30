@@ -3,7 +3,7 @@ import { User } from "../models/index.js";
 
 const { sign } = pkg;
 
-async function register(email, password, role) {
+async function register(username, email, password, role) {
 
   let result = {
     message: null,
@@ -15,6 +15,7 @@ async function register(email, password, role) {
 
     // Throws SequelizeUniqueConstraintError if email exists.
     const newUser = await User.create({
+      username: username,
       email: email,
       password: password,
       role: role
@@ -22,7 +23,7 @@ async function register(email, password, role) {
     console.log('register service', newUser);
 
     if (newUser) {
-      result.message = `Email ${newUser.email} registered successfully.`;
+      result.message = `${newUser.email} registered successfully.`;
       result.status = 200;
     }
 
@@ -32,7 +33,7 @@ async function register(email, password, role) {
     // Throws when email exists due to unique constraint.
     if (err.name === "SequelizeUniqueConstraintError") {
       result.status = 500;  // 500 Internal Server Error
-      result.message = `Email ${email} exists.`;
+      result.message = `${email} already exists.`;
     } else {
       // Log other errors that may occur.
       console.log(`${err.name}: ${err.message}`);
