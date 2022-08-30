@@ -33,6 +33,7 @@ router.get("/general/tutors", tutorController.retrieveTutors);
 router.get('/general/subjects', subjectController.retrieveSubjects)
 router.get("/general/students", studentController.retrieveStudents);
 router.get("/general/enrollments", enrollmentController.retrieveEnrollments);
+router.get("/general/users", userController.retrieveUsers);
 
 
 // router.get("/general/class", enrollmentController.studentInSubject);

@@ -20,11 +20,23 @@ async function register(username, email, password, role) {
       password: password,
       role: role
     });
+
     console.log('register service', newUser);
 
     if (newUser) {
+
+      // Capture selective user data
+      const userData = {
+      id: newUser.id,
+      username: newUser.username,
+      email: newUser.email,
+      role: newUser.role
+      };
+
       result.message = `${newUser.email} registered successfully.`;
       result.status = 200;
+      result.data = userData;
+
     }
 
   } catch (err) { 
@@ -72,18 +84,26 @@ async function login(email, password) {
 
   } else { 
 
-    // pwd validation passed.
-    result.message = `Login successful.`;
-    result.status = 200;
+    console.log('login service', user);
 
-    const data = {
+    // pwd validation passed.
+    // Prepare user data for token generation.
+    const userData = {
+      id: user.id,
+      username: user.username,
       email: user.email,
       role: user.role
     };
 
     // Synchronous sign.
-    const token =  sign(data, 'secret', { expiresIn: "1d" });
-    result.data = { 'token': token };
+    const token =  sign(userData, 'secret', { expiresIn: "1d" });
+
+    // Add token into userData object.
+    userData['token'] = token;
+
+    result.message = `Login successful.`;
+    result.status = 200;
+    result.data = userData;
 
     console.log("login: ", JSON.stringify(result));
   }

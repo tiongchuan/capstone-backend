@@ -24,6 +24,23 @@ async function getUser(userId) {
     return result;
   }
 
+  async function getUsers() {
+
+    let result = {
+        message: null,
+        status: null,
+        data: null,
+    };
+  
+    const user = await User.findAll();
+    
+    result.data = user;
+    result.status = 200;
+    result.message = "Retrieve successful";
+  
+    return result;
+  }
+
   async function getUsername(userId) {
 
     let result = {
@@ -50,5 +67,6 @@ async function getUser(userId) {
 
   export {
     getUser,
+    getUsers,
     getUsername
 }
