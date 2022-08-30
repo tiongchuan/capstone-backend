@@ -1,6 +1,6 @@
 # capstone-backend
 
-https://quiet-river-74601.herokuapp.com/ 
+https://quiet-river-74601.herokuapp.com 
 
 1. Endpoints for Users
 - POST /register
