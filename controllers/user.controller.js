@@ -1,4 +1,4 @@
-import { getUser, getUsers, getUsername } from "../services/user.services.js";
+import { getUser, getUsers } from "../services/user.services.js";
 
 class UserController {
 
@@ -11,23 +11,14 @@ class UserController {
     return res.json({ data: result.data, message: result.message });
     } 
 
-       // GET /general/users
-       async retrieveUsers(req, res, next) {
+    // GET /general/users
+    async retrieveUsers(req, res, next) {
 
-        const result = await getUsers();    
-        res.status(result.status);
-    
-        return res.json({ data: result.data, message: result.message });
-        } 
+    const result = await getUsers();    
+    res.status(result.status);
 
-    // GET /general/user/username/:userId
-    async retrieveUsername(req, res, next) {
-
-        const result = await getUsername(req.params.userId);    
-        res.status(result.status);
-    
-        return res.json({ data: result.data, message: result.message });
-        } 
+    return res.json({ data: result.data, message: result.message });
+    } 
   
     // // GET /general/tutors
     // async retrieveTutors(req, res, next) {

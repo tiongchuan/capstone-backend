@@ -66,7 +66,7 @@ export default function (sequelize) {
         {
             sequelize,
             timestamps: false,
-            modelName: "vieweErollment",
+            modelName: "viewErollment",
             tableName: "viewenrollment",
         }
     );

@@ -1,4 +1,4 @@
-import { getTutor, getTutors, updateTutor, deleteTutor, addTutor } from "../services/tutor.services.js";
+import { getTutor, getTutors, updateTutor, deleteTutor, addTutor, getViewTutor } from "../services/tutor.services.js";
 
 class TutorController {
 
@@ -29,7 +29,7 @@ class TutorController {
         return res.json({ message: "Incorrect request data" });
       }
   
-      const result = await updateTutor(req.body.tutorId, req.body.subjectId, req.body.name, req.body.experience, req.body.highestEducation, req.body.hourlyRate, req.body.rating, req.body.testimony);    
+      const result = await updateTutor(req.body.tutorId, req.body.userId, req.body.subjectId, req.body.name, req.body.experience, req.body.highestEducation, req.body.hourlyRate, req.body.rating, req.body.testimony);    
       res.status(result.status);
   
   
@@ -48,10 +48,21 @@ class TutorController {
      // PUT /protected/tutor/add
     async add(req, res, next) {
 
-      const result = await addTutor(req.body.subjectId, req.body.name, req.body.experience, req.body.highestEducation, req.body.hourlyRate, req.body.rating, req.body.testimony);    
+      const result = await addTutor(req.body.userId, req.body.subjectId, req.body.name, req.body.experience, req.body.highestEducation, req.body.hourlyRate, req.body.rating, req.body.testimony);    
       res.status(result.status);
     
       return res.json({ data: result.data, message: result.message }); 
+    }
+
+
+    // GET /general/viewTutor
+    async getViewTutor(req, res, next) {
+
+      const result = await getViewTutor();
+
+      res.status(result.status);
+
+      return res.json({ data: result.data, message: result.message });
     }
 
   }

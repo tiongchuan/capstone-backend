@@ -104,41 +104,6 @@ async function deleteEnrollment(enrollmentId) {
   return result;
 }
 
-
-
-// async function studentInSubject(name) {
-//   let result = {
-//     message: null,
-//     status: null,
-//     data: null,
-//   };
-
-//   const studentInClass = await viewEnrollment.findAll({where: {subject:name}});
-//   console.log(studentInClass);
-
-//   result.data = JSON.stringify(studentInClass)
-//   result.status = 200;
-//   result.message = `Students enrolled in ${name} class`;
-//   return result
-// }
-
-
-// async function studentToTutor(name) {
-//   let result = {
-//     message: null,
-//     status: null,
-//     data: null,
-//   };
-
-//   const studentInClass = await viewEnrollment.findAll({ where: {tutor:name}});
-//   console.log(studentInClass);
-
-//   result.data = JSON.stringify(studentInClass)
-//   result.status = 200;
-//   result.message = `Students taught by Tutor ${name} `;
-//   return result
-// }
-
 async function getViewEnrollment() {
   let result = {
     message: null,
@@ -146,20 +111,15 @@ async function getViewEnrollment() {
     data: null,
   };
 
-  const test = await viewEnrollment.findAll();
-  console.log(test);
+  const enrollmentView = await viewEnrollment.findAll();
 
-  result.data = JSON.stringify(test)
+  result.data = enrollmentView;
   result.status = 200;
   result.message = `Retrieve successful`;
   return result
 }
 
-
-
 export {
-  // studentToTutor,
-  // studentInSubject,
   addEnrollment,
   getEnrollment,
   getEnrollments,

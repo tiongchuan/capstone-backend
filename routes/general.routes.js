@@ -26,7 +26,7 @@ router.get("/general/subject/:subjectId", subjectController.retrieveSubject);
 router.get("/general/student/:studentId", studentController.retrieveStudent);
 router.get("/general/enrollment/:enrollmentId", enrollmentController.retrieveEnrollment);
 router.get("/general/user/:userId", userController.retrieveUser);
-router.get("/general/user/username/:userId", userController.retrieveUsername);
+
 
 // Invoke retrieveTutors() in TutorController based on the route
 router.get("/general/tutors", tutorController.retrieveTutors);
@@ -36,9 +36,9 @@ router.get("/general/enrollments", enrollmentController.retrieveEnrollments);
 router.get("/general/users", userController.retrieveUsers);
 
 
-// router.get("/general/class", enrollmentController.studentInSubject);
-// router.get("/general/tutor", enrollmentController.studentToTutor);
 router.get("/general/viewEnrollment", enrollmentController.getViewEnrollment);
+router.get("/general/viewTutor", tutorController.getViewTutor);
+router.get("/general/viewStudent", studentController.getViewStudent);
 
 export default router;
 
