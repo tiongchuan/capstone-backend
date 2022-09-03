@@ -22,7 +22,7 @@ export default function (sequelize) {
                 field: "area",
             },
             schoolCode: {
-                type: DataTypes.STRING(20),
+                type: DataTypes.STRING(100),
                 allowNull: false,
                 field: "school_code",
             },
