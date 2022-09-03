@@ -27,12 +27,12 @@ export default function (sequelize) {
                 field: "school_code",
             },
             type: {
-                type: DataTypes.STRING(20),
+                type: DataTypes.STRING(100),
                 allowNull: false,
                 field: "type",
             },
             funding: {
-                type: DataTypes.STRING(20),
+                type: DataTypes.STRING(100),
                 allowNull: false,
                 field: "funding",
             },
