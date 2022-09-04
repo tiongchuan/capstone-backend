@@ -106,7 +106,6 @@ async function addStudent(userId, schoolId, name, parent, remarks) {
     
     const student = await Student.create({userId, schoolId, name, parent, remarks});
 
-    await student.save();
     result.data = student;
     result.status = 200;
     result.message = "Student added successful";

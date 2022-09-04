@@ -36,12 +36,19 @@ https://quiet-river-74601.herokuapp.com
 - DELETE /protected/enrollment/delete/:enrollmentId
 - PUT /protectedl/enrollment/add
 
-6. Endpoints for viewTables
+6. Endpoints for Schools
+- GET /general/school/:schoolId
+- GET /general/schools
+- POST /protected/school/update
+- DELETE /protected/school/delete/:schoolId
+- PUT /protectedl/school/add
+
+7. Endpoints for viewTables
 - GET /general/viewStudent
 - GET /general/viewTutor
 - GET /general/viewEnrollment
 
-7. Adding constraints into tables
+8. Adding constraints into tables
 - alter table "students" add constraint fk_user_id foreign key (user_id) references users(id);
 - alter table "students" add constraint fk_school_id foreign key (school_id) references schools(id);
 - alter table "tutors" add constraint fk_user_id foreign key (user_id) references users(id);
@@ -50,7 +57,7 @@ https://quiet-river-74601.herokuapp.com
 - alter table "enrollments" add constraint fk_tutor_id foreign key (tutor_id) references tutors(id);
 - alter table "enrollments" add constraint fk_subject_id foreign key (subject_id) references subjects(id);
 
-8. Creating view tables
+9. Creating view tables
 
 CREATE VIEW viewEnrollment AS
 SELECT e.id AS id,

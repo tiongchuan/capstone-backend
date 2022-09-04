@@ -12,17 +12,17 @@ export default function (sequelize) {
                 field: "id",
             },
             studentName: {
-                type: DataTypes.STRING(20),
+                type: DataTypes.STRING(50),
                 allowNull: false,
                 field: "student",
             },
             parent: {
-                type: DataTypes.STRING(20),
+                type: DataTypes.STRING(50),
                 allowNull: false,
                 field: "parent",
             },
             remarks: {
-                type: DataTypes.TEXT(200),
+                type: DataTypes.TEXT(500),
                 allowNull: false,
                 field: "remarks",
             },

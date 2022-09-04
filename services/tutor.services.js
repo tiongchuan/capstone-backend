@@ -109,7 +109,6 @@ async function addTutor(userId, subjectId, name, experience, highestEducation, h
     
     const tutor = await Tutor.create({userId, subjectId, name, experience, highestEducation, hourlyRate, rating, testimony});
 
-    await tutor.save();
     result.data = tutor;
     result.status = 200;
     result.message = "Tutor added successfully";

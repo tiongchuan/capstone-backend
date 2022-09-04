@@ -13,17 +13,17 @@ export default function (sequelize) {
                 field: "id",
             },
             studentName: {
-                type: DataTypes.STRING(20),
+                type: DataTypes.STRING(50),
                 allowNull: false,
                 field: "student",
             },
             parentName: {
-                type: DataTypes.STRING(20),
+                type: DataTypes.STRING(50),
                 allowNull: false,
                 field: "parent",
             },
             remarks: {
-                type: DataTypes.STRING(200),
+                type: DataTypes.STRING(500),
                 allowNull: false,
                 field: "remarks",
             },
@@ -33,22 +33,22 @@ export default function (sequelize) {
                 field: "school_id",
             },
             subject: {
-                type: DataTypes.STRING(20),
+                type: DataTypes.STRING(50),
                 allowNull: false,
                 field: "subject",
             },
             description: {
-                type: DataTypes.TEXT(200),
+                type: DataTypes.TEXT(500),
                 allowNull: false,
                 field: "description",
             },
             comments: {
-                type: DataTypes.TEXT(200),
+                type: DataTypes.TEXT(500),
                 allowNull: false,
                 field: "comments",
             },
             latestScore: {
-                type: DataTypes.STRING(10),
+                type: DataTypes.STRING(50),
                 allowNull: false,
                 field: "latest_score",
             },
@@ -58,7 +58,7 @@ export default function (sequelize) {
                 field: "enrollment_date",
             },
             tutor: {
-                type: DataTypes.STRING(20),
+                type: DataTypes.STRING(50),
                 allowNull: false,
                 field: "tutor",
             },

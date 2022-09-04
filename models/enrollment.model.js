@@ -32,7 +32,7 @@ export default function (sequelize) {
                 field: "enrollment_date",
             },
             comments: {
-                type: DataTypes.TEXT(200),
+                type: DataTypes.TEXT(500),
                 allowNull: false,
                 field: "comments",
             },
@@ -42,7 +42,7 @@ export default function (sequelize) {
                 field: "latest_score",
             },
             bookingTime: {
-                type: DataTypes.STRING(20),
+                type: DataTypes.STRING(50),
                 allowNull: false,
                 field: "booking_time"
             }

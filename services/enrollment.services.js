@@ -8,9 +8,9 @@ async function addEnrollment(studentId, tutorId, subjectId, enrollmentDate, comm
     status: null,
     data: null,
   };
+  
   const enrollment = await Enrollment.create({ studentId, tutorId, subjectId, enrollmentDate, comments, latestScore, bookingTime });
 
-  await enrollment.save();
   result.data = enrollment;
   result.status = 200;
   result.message = "New enrollment is registered sucessfully";

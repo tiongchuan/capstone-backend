@@ -12,7 +12,7 @@ export default function (sequelize) {
                 field: "id",
             },
             tutorName: {
-                type: DataTypes.STRING(20),
+                type: DataTypes.STRING(50),
                 allowNull: false,
                 field: "tutor",
             },
@@ -22,7 +22,7 @@ export default function (sequelize) {
                 field: "experience",
             },
             highestEducation: {
-                type: DataTypes.STRING(20),
+                type: DataTypes.STRING(50),
                 allowNull: false,
                 field: "highest_education",
             },
@@ -37,7 +37,7 @@ export default function (sequelize) {
                 field: "rating",
             },
             testimony: {
-                type: DataTypes.TEXT(200),
+                type: DataTypes.TEXT(500),
                 allowNull: false,
                 field: "testimony",
             },
@@ -57,12 +57,12 @@ export default function (sequelize) {
                 field: "subject_id",
             },
             subject: {
-                type: DataTypes.STRING(20),
+                type: DataTypes.STRING(50),
                 allowNull: false,
                 field: "subject",
             },
             description: {
-                type: DataTypes.TEXT(200),
+                type: DataTypes.TEXT(500),
                 allowNull: false,
                 field: "description",
             },

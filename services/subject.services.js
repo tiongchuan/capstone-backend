@@ -77,10 +77,6 @@ async function addSubject (name, description) {
 
     const newSubject = await Subject.create({name, description})
 
-    newSubject.name = name;
-    newSubject.description = description;
-
-    await newSubject.save();
     result.data = newSubject;
     result.status = 200;
     result.message = "Create successful";
