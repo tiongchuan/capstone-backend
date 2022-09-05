@@ -7,6 +7,8 @@ https://quiet-river-74601.herokuapp.com
 - POST /login
 - GET /general/user/:userId
 - GET /general/users
+- GET /general/user/profile_img/:userId
+- POST /protected/user/updateProfile_img/:userId
 
 2. Endpoints for Tutors
 - GET /general/tutor/:tutorId
@@ -48,7 +50,14 @@ https://quiet-river-74601.herokuapp.com
 - GET /general/viewTutor
 - GET /general/viewEnrollment
 
-8. Adding constraints into tables
+8. Set tables initial ID
+- ALTER SEQUENCE users_id_seq RESTART WITH 1001
+- ALTER SEQUENCE tutors_id_seq RESTART WITH 1001
+- ALTER SEQUENCE students_id_seq RESTART WITH 1001
+- ALTER SEQUENCE schools_id_seq RESTART WITH 1001
+- ALTER SEQUENCE subjects_id_seq RESTART WITH 1001
+
+9. Adding constraints into tables
 - alter table "students" add constraint fk_user_id foreign key (user_id) references users(id);
 - alter table "students" add constraint fk_school_id foreign key (school_id) references schools(id);
 - alter table "tutors" add constraint fk_user_id foreign key (user_id) references users(id);
@@ -57,7 +66,7 @@ https://quiet-river-74601.herokuapp.com
 - alter table "enrollments" add constraint fk_tutor_id foreign key (tutor_id) references tutors(id);
 - alter table "enrollments" add constraint fk_subject_id foreign key (subject_id) references subjects(id);
 
-9. Creating view tables
+10. Creating view tables
 
 CREATE VIEW viewEnrollment AS
 SELECT e.id AS id,
