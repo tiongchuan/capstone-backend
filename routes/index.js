@@ -4,11 +4,11 @@ import registerRoute from "./register.route.js";
 import loginRoute from "./login.route.js";
 import protectedRoutes from "./protected.routes.js";
 import generalRoutes from "./general.routes.js";
-
+import cors from "cors";
 
 const app = express();
 
-
+app.use(cors());
 
 // Set middleware to parses incoming JSON requests and puts the parsed data in req.body.
 app.use(express.json());
@@ -25,6 +25,9 @@ app.use(registerRoute);
 app.use(loginRoute);
 app.use(generalRoutes);
 app.use(protectedRoutes);
+
+// Static images folder
+app.use('/Images', express.static('./Images'));
 
 export default app;
 
