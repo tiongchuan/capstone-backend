@@ -52,7 +52,7 @@ async function getSchool(schoolId) {
     const school = await School.findByPk(schoolId);
 
     if (!school) {
-        result.message = `Student ID ${schoolId} is not found.`;
+        result.message = `School ID ${schoolId} is not found.`;
         result.status = 404;
         return result;
     }
