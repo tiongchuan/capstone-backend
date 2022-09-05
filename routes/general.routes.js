@@ -31,6 +31,9 @@ router.get("/general/user/:userId", userController.retrieveUser);
 router.get("/general/school/:schoolId", schoolController.retrieveSchool);
 
 
+// Invoke retrieveProfile_img() in UserController based on the route by passing in the userId
+router.get("/general/user/profile_img/:userId", userController.retrieveProfile_img);
+
 // Invoke retrieveTutors() in TutorController based on the route
 router.get("/general/tutors", tutorController.retrieveTutors);
 router.get('/general/subjects', subjectController.retrieveSubjects)
@@ -38,6 +41,9 @@ router.get("/general/students", studentController.retrieveStudents);
 router.get("/general/enrollments", enrollmentController.retrieveEnrollments);
 router.get("/general/users", userController.retrieveUsers);
 router.get("/general/schools", schoolController.retrieveSchools);
+
+// router.get("/general/class", enrollmentController.studentInSubject);
+// router.get("/general/tutor", enrollmentController.studentToTutor);
 
 router.get("/general/viewEnrollment", enrollmentController.getViewEnrollment);
 router.get("/general/viewTutor", tutorController.getViewTutor);

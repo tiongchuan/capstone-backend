@@ -23,7 +23,6 @@ class AuthController {
   }
 
   async register(req, res, next) {
-
     let username = req.body.username;
     let email = req.body.email;
     let password = req.body.password;
