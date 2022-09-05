@@ -1,4 +1,4 @@
-import { Tutor } from "../models/index.js";
+import { Tutor, viewTutor } from "../models/index.js";
 
 async function getTutor(tutorId) {
 
@@ -41,7 +41,7 @@ async function getTutors() {
     return result;
 }
 
-async function updateTutor(tutorId, subjectId, name, experience, highestEducation, hourlyRate, rating, testimony) {
+async function updateTutor(tutorId, userId, subjectId, name, experience, highestEducation, hourlyRate, rating, testimony) {
 
     let result = {
         message: null,
@@ -57,8 +57,9 @@ async function updateTutor(tutorId, subjectId, name, experience, highestEducatio
         return result;
     }
 
-    tutor.name = name;
+    tutor.userId = userId;
     tutor.subjectId = subjectId;
+    tutor.name = name;
     tutor.experience = experience;
     tutor.highestEducation = highestEducation;
     tutor.hourlyRate = hourlyRate;
@@ -98,7 +99,7 @@ async function deleteTutor(tutorId) {
     return result;
 }
 
-async function addTutor(subjectId, name, experience, highestEducation, hourlyRate, rating, testimony) {
+async function addTutor(userId, subjectId, name, experience, highestEducation, hourlyRate, rating, testimony) {
 
     let result = {
         message: null,
@@ -106,9 +107,8 @@ async function addTutor(subjectId, name, experience, highestEducation, hourlyRat
         data: null,
     };
     
-    const tutor = await Tutor.create({subjectId, name, experience, highestEducation, hourlyRate, rating, testimony});
+    const tutor = await Tutor.create({userId, subjectId, name, experience, highestEducation, hourlyRate, rating, testimony});
 
-    await tutor.save();
     result.data = tutor;
     result.status = 200;
     result.message = "Tutor added successfully";
@@ -117,11 +117,27 @@ async function addTutor(subjectId, name, experience, highestEducation, hourlyRat
     return result;
 }
 
+async function getViewTutor() {
+    let result = {
+      message: null,
+      status: null,
+      data: null,
+    };
+  
+    const tutorVIew = await viewTutor.findAll();
+  
+    result.data = tutorVIew;
+    result.status = 200;
+    result.message = `Retrieve successful`;
+    return result
+  }
+
 
 export {
    getTutor,
    getTutors,
    updateTutor,
    deleteTutor,
-   addTutor
+   addTutor,
+   getViewTutor
 };

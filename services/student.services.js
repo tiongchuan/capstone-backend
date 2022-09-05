@@ -1,4 +1,4 @@
-import { Student } from "../models/index.js";
+import { Student, viewStudent } from "../models/index.js";
 
 async function getStudent(studentId) {
 
@@ -41,7 +41,7 @@ async function getStudents() {
     return result;
 }
 
-async function updateStudent(studentId, name, schoolId, parent, remarks) {
+async function updateStudent(studentId, userId, schoolId, name, parent, remarks) {
 
     let result = {
         message: null,
@@ -57,8 +57,9 @@ async function updateStudent(studentId, name, schoolId, parent, remarks) {
         return result;
     }
 
-    student.name = name;
     student.schoolId = schoolId;
+    student.userId = userId;
+    student.name = name;
     student.parent = parent;
     student.remarks = remarks;
 
@@ -95,7 +96,7 @@ async function deleteStudent(studentId) {
     return result;
 }
 
-async function addStudent(name, schoolId, parent, remarks) {
+async function addStudent(userId, schoolId, name, parent, remarks) {
 
     let result = {
         message: null,
@@ -103,9 +104,8 @@ async function addStudent(name, schoolId, parent, remarks) {
         data: null,
     };
     
-    const student = await Student.create({name, schoolId, parent, remarks});
+    const student = await Student.create({userId, schoolId, name, parent, remarks});
 
-    await student.save();
     result.data = student;
     result.status = 200;
     result.message = "Student added successful";
@@ -113,11 +113,27 @@ async function addStudent(name, schoolId, parent, remarks) {
     return result;
 }
 
+async function getViewStudent() {
+    let result = {
+      message: null,
+      status: null,
+      data: null,
+    };
+  
+    const studentView = await viewStudent.findAll();
+  
+    result.data = studentView;
+    result.status = 200;
+    result.message = `Retrieve successful`;
+    return result
+  }
+
 
 export {
    getStudent,
    getStudents,
    updateStudent,
    deleteStudent,
-   addStudent
+   addStudent,
+   getViewStudent
 };

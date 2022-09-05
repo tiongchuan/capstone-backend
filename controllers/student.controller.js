@@ -1,4 +1,4 @@
-import { getStudent, getStudents, updateStudent, deleteStudent, addStudent } from "../services/student.services.js";
+import { getStudent, getStudents, updateStudent, deleteStudent, addStudent, getViewStudent } from "../services/student.services.js";
 
 class StudentController {
 
@@ -29,7 +29,7 @@ class StudentController {
         return res.json({ message: "Incorrect request data" });
       }
   
-      const result = await updateStudent(req.body.studentId, req.body.name, req.body.schoolId, req.body.parent, req.body.remarks);    
+      const result = await updateStudent(req.body.studentId, req.body.userId, req.body.schoolId, req.body.name, req.body.parent, req.body.remarks);    
       res.status(result.status);
   
   
@@ -48,11 +48,21 @@ class StudentController {
     // PUT /protected/student/add
     async add(req, res, next) {
     
-        const result = await addStudent(req.body.name, req.body.schoolId, req.body.parent, req.body.remarks);    
+        const result = await addStudent(req.body.userId, req.body.schoolId, req.body.name, req.body.parent, req.body.remarks);    
         res.status(result.status);
     
         return res.json({ data: result.data, message: result.message }); 
       }
+
+    // GET /general/viewStudent
+    async getViewStudent(req, res, next) {
+
+        const result = await getViewStudent();
+
+        res.status(result.status);
+
+        return res.json({ data: result.data, message: result.message });
+      }  
 
  
   }

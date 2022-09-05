@@ -66,40 +66,7 @@ async deleteEnrollment(req, res, next) {
   return res.json({ data: result.data, message: result.message });
 }
 
-// async studentInSubject(req, res, next) {
-
-//   console.log(typeof req.body.subject);
-
-//   if (typeof req.body.subject !== "string") {
-//       res.status(400); 
-//       return res.json({ message: "Incorrect request data" });
-//   }
-
-//   const result = await studentInSubject(req.body.subject);
-
-//   res.status(result.status);
-
-//   return res.json({ data: result.data, message: result.message });
-// }
-
-
-// async studentToTutor(req, res, next) {
-
-//   console.log(typeof req.body.tutor);
-
-//   if (typeof req.body.tutor !== "string") {
-//       res.status(400); 
-//       return res.json({ message: "Incorrect request data" });
-//   }
-
-//   const result = await studentToTutor(req.body.tutor);
-
-//   res.status(result.status);
-
-//   return res.json({ data: result.data, message: result.message });
-// }
- 
-
+// GET /general/viewEnrollment
 async getViewEnrollment(req, res, next) {
 
   const result = await getViewEnrollment();

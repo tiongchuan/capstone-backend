@@ -2,29 +2,19 @@ import { DataTypes, Model } from "sequelize";
 
 export default function (sequelize) {
 
-    class tutorModel extends Model {}
+    class viewTutorModel extends Model {}
 
-    tutorModel.init(
+    viewTutorModel.init(
         {
-            id: {
-                type: DataTypes.INTEGER,
-                primaryKey: true,
-                autoIncrement: true,
-            },
-            userId: {
+            tutorId: {
                 type: DataTypes.INTEGER,
                 allowNull: false,
-                field: "user_id",
+                field: "id",
             },
-            subjectId: {
-                type: DataTypes.INTEGER,
-                allowNull: false,
-                field: "subject_id",
-            },
-            name: {
+            tutorName: {
                 type: DataTypes.STRING(50),
                 allowNull: false,
-                field: "name",
+                field: "tutor",
             },
             experience: {
                 type: DataTypes.INTEGER,
@@ -51,14 +41,39 @@ export default function (sequelize) {
                 allowNull: false,
                 field: "testimony",
             },
+            userId: {
+                type: DataTypes.INTEGER,
+                allowNull: false,
+                field: "user_id",
+            },
+            username: {
+                type: DataTypes.STRING(50),
+                allowNull: false,
+                field: "username"
+            },
+            subjectId: {
+                type: DataTypes.INTEGER,
+                allowNull: false,
+                field: "subject_id",
+            },
+            subject: {
+                type: DataTypes.STRING(50),
+                allowNull: false,
+                field: "subject",
+            },
+            description: {
+                type: DataTypes.TEXT(500),
+                allowNull: false,
+                field: "description",
+            },
         },
         {
             sequelize,
             timestamps: false,
-            modelName: "Tutor",
-            tableName: "tutors",
+            modelName: "viewTutor",
+            tableName: "viewtutor",
         }
     );
 
-    return tutorModel;    
+    return viewTutorModel;    
 };

@@ -1,11 +1,10 @@
-
 import { DataTypes, Model } from "sequelize";
 
 export default function (sequelize) {
 
-    class viewEnrollmentModel extends Model {}
+    class viewStudentModel extends Model {}
 
-    viewEnrollmentModel.init(
+    viewStudentModel.init(
         {
             studentId: {
                 type: DataTypes.INTEGER,
@@ -17,59 +16,51 @@ export default function (sequelize) {
                 allowNull: false,
                 field: "student",
             },
-            parentName: {
+            parent: {
                 type: DataTypes.STRING(50),
                 allowNull: false,
                 field: "parent",
             },
             remarks: {
-                type: DataTypes.STRING(500),
+                type: DataTypes.TEXT(500),
                 allowNull: false,
                 field: "remarks",
+            },
+            userId: {
+                type: DataTypes.INTEGER,
+                allowNull: false,
+                field: "user_id",
+              },
+            username: {
+                type: DataTypes.STRING(50),
+                allowNull: false,
+                unique: true,
+                field: "username"
             },
             schoolId: {
                 type: DataTypes.INTEGER,
                 allowNull: false,
                 field: "school_id",
             },
-            subject: {
+            school: {
                 type: DataTypes.STRING(50),
                 allowNull: false,
-                field: "subject",
+                field: "school",
             },
-            description: {
-                type: DataTypes.TEXT(500),
-                allowNull: false,
-                field: "description",
-            },
-            comments: {
-                type: DataTypes.TEXT(500),
-                allowNull: false,
-                field: "comments",
-            },
-            latestScore: {
+            area: {
                 type: DataTypes.STRING(50),
                 allowNull: false,
-                field: "latest_score",
+                field: "area",
             },
-            enrollmentDate: {
-                type: DataTypes.DATEONLY,
-                allowNull: false,
-                field: "enrollment_date",
-            },
-            tutor: {
-                type: DataTypes.STRING(50),
-                allowNull: false,
-                field: "tutor",
-            },
+
         },
         {
             sequelize,
             timestamps: false,
-            modelName: "viewErollment",
-            tableName: "viewenrollment",
+            modelName: "viewStudent",
+            tableName: "viewstudent",
         }
     );
 
-    return viewEnrollmentModel;    
+    return viewStudentModel;    
 };
