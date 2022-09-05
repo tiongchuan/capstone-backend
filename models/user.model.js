@@ -35,7 +35,11 @@ export default function (sequelize) {
         defaultValue: "user",
         field: "role"
       },
-   
+      profile_img: {
+        type: DataTypes.STRING(100),
+        allowNull: true,
+        field: "profile_img"
+      }
     },
     {
       sequelize,

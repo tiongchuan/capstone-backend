@@ -4,6 +4,7 @@ import SubjectController from '../controllers/subject.controller.js';
 import { isAuth } from '../services/isAuth.services.js'
 import EnrollmentController from '../controllers/enrollment.controller.js';
 import StudentController from "../controllers/student.controller.js";
+import UserController from "../controllers/user.controller.js";
 
 const router = Router();
 
@@ -16,6 +17,7 @@ const tutorController = new TutorController();
 const subjectController = new SubjectController();
 const studentController = new StudentController();
 const enrollmentController = new EnrollmentController();
+const userController = new UserController();
 
 // Invoke update() in TutorController based on the route
 // router.post("/protected/tutor/update", isAuth, tutorController.update);
@@ -24,6 +26,9 @@ router.post("/protected/tutor/update", tutorController.update);
 router.post("/protected/subject/update", subjectController.update);
 router.post("/protected/student/update", studentController.update);
 router.post("/protected/enrollment/update", enrollmentController.updateEnrollment);
+
+// Invoke updateProfile_img() in UserController based on the route by passing in the userId
+router.post("/protected/user/updateProfile_img/:userId", userController.updateProfile_img);
 
 // Invoke delete() in TutorController based on the route
 // router.delete("/protected/tutor/delete/:tutorId", isAuth, tutorController.delete);

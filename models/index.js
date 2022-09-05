@@ -10,7 +10,7 @@ import enrollmentModel from './enrollment.model.js'
 import userModel from "./user.model.js"
 import viewEnrollmentModel from "./viewEnrollment.model.js"
 
-// Heroku DB Connection Configuration
+//Heroku DB Connection Configuration
 const sequelize = new Sequelize("d6ssqv6hf7qldc", "rwxbhhdsdaevnd", "27842a83c6ad07b613d334a6a42a9093cd976ae0938c72292e3a96fc6d97b54f", {
   host: "ec2-34-199-68-114.compute-1.amazonaws.com",
   dialect: "postgres",
@@ -20,6 +20,11 @@ const sequelize = new Sequelize("d6ssqv6hf7qldc", "rwxbhhdsdaevnd", "27842a83c6a
     }
   }
 });
+
+// const sequelize = new Sequelize("capstone", "postgres", "abcd5566", {
+//   host: "localhost",
+//   dialect: "postgres"
+// });
 
 // // Local DB Connection
 // const sequelize = new Sequelize("student_db", "postgres", "N0op@psql", {
@@ -39,9 +44,9 @@ async function testConnection() {
       // await sequelize.drop();
       // console.log("All tables dropped!");
 
-      // // Synchronizing all models at once
-      // await sequelize.sync();
-      // console.log("All models were synchronized successfully.");
+      // Synchronizing all models at once
+      await sequelize.sync();
+      console.log("All models were synchronized successfully.");
 
       return true;
 
