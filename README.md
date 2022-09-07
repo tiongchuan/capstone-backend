@@ -68,32 +68,33 @@ https://quiet-river-74601.herokuapp.com
 
 10. Creating view tables
 
+- viewENrollment table
 CREATE VIEW viewEnrollment AS
-SELECT e.id AS id,
-	s.name AS "student", s.parent, s.remarks, s.school_id,
+SELECT e.id AS "enrollment_id",
+	s.id AS "student_id", s.name AS "student", s.parent, s.remarks, s.user_id AS "user_id", s.school_id,
 	sub.name AS "subject", sub.description,
-	e.comments, e.latest_score, e.enrollment_date,
-	t.name AS "tutor"
+	e.enrollment_date, e.booking_time, e.comments, e.latest_score,
+	t.id AS "tutor_id", t.name AS "tutor"
 FROM enrollments e 
 	LEFT JOIN students s ON e.student_id = s.id
 	LEFT JOIN subjects sub on e.subject_id = sub.id
 	LEFT JOIN tutors t on e.tutor_id = t.id
-
-
+	
+- viewTutor table	
 CREATE VIEW viewTutor AS
-SELECT t.id AS id,
+SELECT t.id AS "tutor_id",
 	t.name AS "tutor", t.experience, t.highest_education, t.hourly_rate, t.rating, t.testimony,
-	u.id AS "user_id", u.username,
+	u.id AS "user_id", u.username, u.email,
 	sub.id AS "subject_id", sub.name AS "subject", sub.description
 FROM tutors t 
 	LEFT JOIN users u ON t.user_id = u.id
 	LEFT JOIN subjects sub on t.subject_id = sub.id
 
-
+- viewStudent table
 CREATE VIEW viewStudent AS
-SELECT s.id AS id,
+SELECT s.id AS "student_id",
 	s.name AS "student", s.parent, s.remarks,
-	u.id AS "user_id", u.username,
+	u.id AS "user_id", u.username, u.email,
 	sch.id AS "school_id", sch.name AS "school", sch.area
 FROM students s 
 	LEFT JOIN users u ON s.user_id = u.id
