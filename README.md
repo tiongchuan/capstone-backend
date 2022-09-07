@@ -68,9 +68,8 @@ https://quiet-river-74601.herokuapp.com
 
 10. Creating view tables
 
-- viewENrollment table
 CREATE VIEW viewEnrollment AS
-SELECT e.id AS "enrollment_id",
+SELECT e.id AS id,
 	s.id AS "student_id", s.name AS "student", s.parent, s.remarks, s.user_id AS "user_id", s.school_id,
 	sub.name AS "subject", sub.description,
 	e.enrollment_date, e.booking_time, e.comments, e.latest_score,
@@ -80,9 +79,9 @@ FROM enrollments e
 	LEFT JOIN subjects sub on e.subject_id = sub.id
 	LEFT JOIN tutors t on e.tutor_id = t.id
 	
-- viewTutor table	
+	
 CREATE VIEW viewTutor AS
-SELECT t.id AS "tutor_id",
+SELECT t.id AS id,
 	t.name AS "tutor", t.experience, t.highest_education, t.hourly_rate, t.rating, t.testimony,
 	u.id AS "user_id", u.username, u.email,
 	sub.id AS "subject_id", sub.name AS "subject", sub.description
@@ -90,9 +89,9 @@ FROM tutors t
 	LEFT JOIN users u ON t.user_id = u.id
 	LEFT JOIN subjects sub on t.subject_id = sub.id
 
-- viewStudent table
+
 CREATE VIEW viewStudent AS
-SELECT s.id AS "student_id",
+SELECT s.id AS id,
 	s.name AS "student", s.parent, s.remarks,
 	u.id AS "user_id", u.username, u.email,
 	sch.id AS "school_id", sch.name AS "school", sch.area

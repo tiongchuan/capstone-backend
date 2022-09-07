@@ -10,7 +10,7 @@ export default function (sequelize) {
             enrollmentId: {
                 type: DataTypes.INTEGER,
                 allowNull: false,
-                field: "enrollment_id",
+                field: "id",
             },
             studentId: {
                 type: DataTypes.INTEGER,
