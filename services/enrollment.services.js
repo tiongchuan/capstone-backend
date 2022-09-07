@@ -119,13 +119,37 @@ async function getViewEnrollment() {
   return result
 }
 
+async function getViewEnrollmentByUserId(userId) {
+
+  let result = {
+      message: null,
+      status: null,
+      data: null,
+  };
+
+  const enrollmentView = await viewEnrollment.findAll({
+      where: {
+        userId: userId
+      }
+    });
+
+  result.data = enrollmentView;
+  result.status = 200;
+  result.message = `Retrieve successful`;
+
+  return result
+}
+
+
+
 export {
   addEnrollment,
   getEnrollment,
   getEnrollments,
   updateEnrollment,
   deleteEnrollment,
-  getViewEnrollment
+  getViewEnrollment,
+  getViewEnrollmentByUserId
 }
 
 

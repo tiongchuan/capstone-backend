@@ -1,12 +1,11 @@
 import { 
-  getViewEnrollment,
-  // studentToTutor,
-  // studentInSubject, 
   addEnrollment, 
   getEnrollment, 
   getEnrollments, 
   updateEnrollment, 
-  deleteEnrollment } from "../services/enrollment.services.js";
+  deleteEnrollment,
+  getViewEnrollment,
+  getViewEnrollmentByUserId } from "../services/enrollment.services.js";
 
 class EnrollmentController {
 
@@ -70,6 +69,16 @@ async deleteEnrollment(req, res, next) {
 async getViewEnrollment(req, res, next) {
 
   const result = await getViewEnrollment();
+
+  res.status(result.status);
+
+  return res.json({ data: result.data, message: result.message });
+}
+
+// GET /general/viewEnrollment/:userId
+async getViewEnrollmentByUserId(req, res, next) {
+
+  const result = await getViewEnrollmentByUserId(req.params.userId);
 
   res.status(result.status);
 

@@ -49,8 +49,11 @@ https://quiet-river-74601.herokuapp.com
 - GET /general/viewStudent
 - GET /general/viewTutor
 - GET /general/viewEnrollment
+- GET /general/viewStudent/:userId
+- GET /general/viewTutor/:userId
+- GET /general/viewEnrollment/:userId
 
-8. Set tables initial ID
+8. Set tables initial starting ID
 - ALTER SEQUENCE users_id_seq RESTART WITH 1001
 - ALTER SEQUENCE tutors_id_seq RESTART WITH 1001
 - ALTER SEQUENCE students_id_seq RESTART WITH 1001
