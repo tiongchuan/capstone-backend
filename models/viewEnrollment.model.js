@@ -6,11 +6,16 @@ export default function (sequelize) {
     class viewEnrollmentModel extends Model {}
 
     viewEnrollmentModel.init(
-        {
+        {   
+            enrollmentId: {
+                type: DataTypes.INTEGER,
+                allowNull: false,
+                field: "enrollment_id",
+            },
             studentId: {
                 type: DataTypes.INTEGER,
                 allowNull: false,
-                field: "id",
+                field: "student_id",
             },
             studentName: {
                 type: DataTypes.STRING(50),
@@ -27,6 +32,11 @@ export default function (sequelize) {
                 allowNull: false,
                 field: "remarks",
             },
+            userId: {
+                type: DataTypes.INTEGER,
+                allowNull: false,
+                field: "user_id",
+            },
             schoolId: {
                 type: DataTypes.INTEGER,
                 allowNull: false,
@@ -42,6 +52,16 @@ export default function (sequelize) {
                 allowNull: false,
                 field: "description",
             },
+            enrollmentDate: {
+                type: DataTypes.DATEONLY,
+                allowNull: false,
+                field: "enrollment_date",
+            },
+            bookingTime: {
+                type: DataTypes.STRING(50),
+                allowNull: false,
+                field: "booking_time"
+            },
             comments: {
                 type: DataTypes.TEXT(500),
                 allowNull: false,
@@ -52,10 +72,10 @@ export default function (sequelize) {
                 allowNull: false,
                 field: "latest_score",
             },
-            enrollmentDate: {
-                type: DataTypes.DATEONLY,
+            tutorId: {
+                type: DataTypes.INTEGER,
                 allowNull: false,
-                field: "enrollment_date",
+                field: "tutor_id",
             },
             tutor: {
                 type: DataTypes.STRING(50),

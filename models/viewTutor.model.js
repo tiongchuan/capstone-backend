@@ -9,7 +9,7 @@ export default function (sequelize) {
             tutorId: {
                 type: DataTypes.INTEGER,
                 allowNull: false,
-                field: "id",
+                field: "tutor_id",
             },
             tutorName: {
                 type: DataTypes.STRING(50),
@@ -50,6 +50,11 @@ export default function (sequelize) {
                 type: DataTypes.STRING(50),
                 allowNull: false,
                 field: "username"
+            },
+            email: {
+                type: DataTypes.STRING(50),
+                allowNull: false,
+                field: "email"
             },
             subjectId: {
                 type: DataTypes.INTEGER,
