@@ -17,7 +17,7 @@ const sequelize = new Sequelize("d6ssqv6hf7qldc", "rwxbhhdsdaevnd", "27842a83c6a
   host: "ec2-34-199-68-114.compute-1.amazonaws.com",
   dialect: "postgres",
   dialectOptions: {
-    ssl: 
+    ssl: {
       rejectUnauthorized: false
     }
   }
