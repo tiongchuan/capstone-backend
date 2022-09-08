@@ -12,7 +12,7 @@ class EnrollmentController {
 // PUT /protectedl/enrollment/add
 async createEnrollment(req,res,next){
 
-  const result = await addEnrollment(req.body.studentId, req.body.tutorId, req.body.subjectId, req.body.enrollmentDate, req.body.comments, req.body.latestScore, req.body.bookingTime)
+  const result = await addEnrollment(req.body.userId, req.body.tutorId, req.body.subjectId, req.body.enrollmentDate, req.body.comments, req.body.latestScore, req.body.bookingTime)
   
   res.status(result.status);
 
@@ -48,7 +48,7 @@ async updateEnrollment(req, res, next) {
     res.status(400);
     return res.json({ message: "Incorrect request data" });
   }
-  const result = await updateEnrollment( req.body.enrollmentId, req.body.studentId, req.body.tutorId, req.body.subjectId, req.body.enrollmentDate, req.body.comments, req.body.latestScore, req.body.bookingTime );    
+  const result = await updateEnrollment( req.body.enrollmentId, req.body.userId, req.body.tutorId, req.body.subjectId, req.body.enrollmentDate, req.body.comments, req.body.latestScore, req.body.bookingTime );    
   
   res.status(result.status);
   

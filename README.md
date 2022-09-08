@@ -78,7 +78,7 @@ SELECT e.id AS id,
 	e.enrollment_date, e.booking_time, e.comments, e.latest_score,
 	t.id AS "tutor_id", t.name AS "tutor"
 FROM enrollments e 
-	LEFT JOIN students s ON e.student_id = s.id
+	LEFT JOIN students s ON e.user_id = s.user_id
 	LEFT JOIN subjects sub on e.subject_id = sub.id
 	LEFT JOIN tutors t on e.tutor_id = t.id
 	

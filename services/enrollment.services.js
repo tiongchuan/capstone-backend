@@ -2,14 +2,14 @@
 import { Enrollment, viewEnrollment } from "../models/index.js";
 
 
-async function addEnrollment(studentId, tutorId, subjectId, enrollmentDate, comments, latestScore, bookingTime) {
+async function addEnrollment(userId, tutorId, subjectId, enrollmentDate, comments, latestScore, bookingTime) {
   let result = {
     message: null,
     status: null,
     data: null,
   };
   
-  const enrollment = await Enrollment.create({ studentId, tutorId, subjectId, enrollmentDate, comments, latestScore, bookingTime });
+  const enrollment = await Enrollment.create({ userId, tutorId, subjectId, enrollmentDate, comments, latestScore, bookingTime });
 
   result.data = enrollment;
   result.status = 200;
@@ -52,7 +52,7 @@ async function getEnrollments() {
   return result;
 }
 
-async function updateEnrollment(enrollmentId, studentId, tutorId, subjectId, enrollmentDate, comments, latestScore, bookingTime) {
+async function updateEnrollment(enrollmentId, userId, tutorId, subjectId, enrollmentDate, comments, latestScore, bookingTime) {
 
   let result = {
     message: null,
@@ -68,7 +68,7 @@ async function updateEnrollment(enrollmentId, studentId, tutorId, subjectId, enr
     return result;
   }
  
-  enrollment.studentId = studentId;
+  enrollment.userId = userId;
   enrollment.tutorId = tutorId;
   enrollment.subjectId = subjectId;
   enrollment.enrollmentDate = enrollmentDate;
