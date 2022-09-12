@@ -13,6 +13,9 @@ app.use(cors());
 // Set middleware to parses incoming JSON requests and puts the parsed data in req.body.
 app.use(express.json());
 
+// Static images folder
+app.use('/Images', express.static('./Images'));
+
 // For debugging.
 app.use((req, res, next) => {
     console.log(`${req.method} ${req.url} ${JSON.stringify(req.body)}`);
@@ -25,9 +28,6 @@ app.use(registerRoute);
 app.use(loginRoute);
 app.use(generalRoutes);
 app.use(protectedRoutes);
-
-// Static images folder
-app.use('/Images', express.static('./Images'));
 
 export default app;
 

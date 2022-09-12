@@ -175,59 +175,66 @@ class UserController {
 
         return res.json({ data: result.data, message: result.message });
         } 
+
+        //mycode
+    // Upload profile_img to server 
+    // async updateProfile_img(req, res, next) {
+    //   try {
+    
+    // const imageFilter = (req, file, cb) => {
+    //   const filetypes = /jpg|png/
+    //   const mimetype = filetypes.test(file.mimetype)
+    //   // const extname = filetypes.test(path.extname(file.originalname).toLowerCase())
+    //   // if (mimetype && extname) {
+    //   //   return cb(null, true)
+    //   if (mimetype) {
+    //     return cb(null, true)
+    //   } else {
+    //     cb("Error: File upload only supports the following filetypes - " + filetypes)
+    //   }
+    // }
+
+    // let storage = multer.diskStorage({
+    //   destination: (req, file, cb) => {
+    //     cb(null, 'Images');
+    //   },
+    //   filename: (req, file, cb) => {
+    //     cb(null, Date.now() + file.originalname);
+    //   },
+    // });
+
+    // let upload = multer({
+    //   storage: storage,
+    //   fileFilter: imageFilter,
+    //   limits: { fileSize: 1000000 }
+    // }).single("profile_img");
+    // } 
+
     // Upload profile_img to server 
     async updateProfile_img(req, res, next) {
       try {
-        // const storage = multer.diskStorage({
-        //     destination: function (req, file, cb) {
-        //         cb(null, 'Images');
-        //     },
-        //     filename: function (req, file, cb) {
-        //         cb(null, Date.now() + path.extname(file.originalname));
-        //     }
-        // });
-        // const upload = multer({ 
-        //   storage: storage,
-        //   limits: { fileSize: 1000000 },
-        //   fileFilter: function (req, file, cb) {
-        //     const filetypes = /jpeg|jpg|png|gif/
-        //     const mimetype = filetypes.test(file.mimetype)
-        //     const extname = filetypes.test(path.extname(file.originalname).toLowerCase())
-        //     if (mimetype && extname) {
-        //       return cb(null, true)
-        //     }
-        //     cb("Error: File upload only supports the following filetypes - " + filetypes)
-        //   }, 
-        // }).single("profile_img");
+        const storage = multer.diskStorage({
+            destination: function (req, file, cb) {
+                cb(null, 'Images')
+            },
+            filename: function (req, file, cb) {
+                cb(null, Date.now() + path.extname(file.originalname));
+            }
+        });
+        const upload = multer({ 
+          storage: storage,
+          limits: { fileSize: 2000000 },
+          fileFilter: function (req, file, cb) {
+            const filetypes = /jpeg|jpg|png|gif/
+            const mimetype = filetypes.test(file.mimetype)
+            const extname = filetypes.test(path.extname(file.originalname).toLowerCase())
+            if (mimetype && extname) {
+              return cb(null, true)
+            }
+            cb("Error: File upload only supports the following filetypes - " + filetypes)
+          }, 
+        }).single("profile_img");
 
-        
-    const imageFilter = (req, file, cb) => {
-      const filetypes = /jpg|png/
-      const mimetype = filetypes.test(file.mimetype)
-      // const extname = filetypes.test(path.extname(file.originalname).toLowerCase())
-      // if (mimetype && extname) {
-      //   return cb(null, true)
-      if (mimetype) {
-        return cb(null, true)
-      } else {
-        cb("Error: File upload only supports the following filetypes - " + filetypes)
-      }
-    }
-
-    let storage = multer.diskStorage({
-      destination: (req, file, cb) => {
-        cb(null, 'Images');
-      },
-      filename: (req, file, cb) => {
-        cb(null, Date.now() + file.originalname);
-      },
-    });
-
-    let upload = multer({
-      storage: storage,
-      fileFilter: imageFilter,
-      limits: { fileSize: 1000000 }
-    }).single("profile_img");
 
         // POST /protected/user/updateProfile_img/:userId
         upload(req, res, async function (err) {

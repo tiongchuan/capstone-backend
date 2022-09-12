@@ -1,4 +1,4 @@
-import { getStudent, getStudents, updateStudent, deleteStudent, addStudent, getViewStudent } from "../services/student.services.js";
+import { getStudent, getStudents, updateStudent, deleteStudent, addStudent, getViewStudent, getViewStudentByUserId } from "../services/student.services.js";
 
 class StudentController {
 
@@ -39,30 +39,40 @@ class StudentController {
      // DELETE /protected/student/delete/:studentId
      async delete(req, res, next) {
   
-        const result = await deleteStudent(req.params.studentId);    
-        res.status(result.status);
-    
-        return res.json({ data: result.data, message: result.message });
-      }
+      const result = await deleteStudent(req.params.studentId);    
+      res.status(result.status);
+  
+      return res.json({ data: result.data, message: result.message });
+    }
 
     // PUT /protected/student/add
     async add(req, res, next) {
     
-        const result = await addStudent(req.body.userId, req.body.schoolId, req.body.name, req.body.parent, req.body.remarks);    
-        res.status(result.status);
-    
-        return res.json({ data: result.data, message: result.message }); 
-      }
+      const result = await addStudent(req.body.userId, req.body.schoolId, req.body.name, req.body.parent, req.body.remarks);    
+      res.status(result.status);
+  
+      return res.json({ data: result.data, message: result.message }); 
+    }
 
     // GET /general/viewStudent
     async getViewStudent(req, res, next) {
 
-        const result = await getViewStudent();
+      const result = await getViewStudent();
 
-        res.status(result.status);
+      res.status(result.status);
 
-        return res.json({ data: result.data, message: result.message });
-      }  
+      return res.json({ data: result.data, message: result.message });
+    }
+
+     // GET /general/viewStudent/:userId
+     async getViewStudentByUserId(req, res, next) {
+
+      const result = await getViewStudentByUserId(req.params.userId);
+
+      res.status(result.status);
+
+      return res.json({ data: result.data, message: result.message });
+    }
 
  
   }

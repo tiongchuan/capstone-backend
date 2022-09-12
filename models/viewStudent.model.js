@@ -37,18 +37,23 @@ export default function (sequelize) {
                 unique: true,
                 field: "username"
             },
+            email: {
+                type: DataTypes.STRING(50),
+                allowNull: false,
+                field: "email"
+            },
             schoolId: {
                 type: DataTypes.INTEGER,
                 allowNull: false,
                 field: "school_id",
             },
             school: {
-                type: DataTypes.STRING(50),
+                type: DataTypes.STRING(100),
                 allowNull: false,
                 field: "school",
             },
             area: {
-                type: DataTypes.STRING(50),
+                type: DataTypes.STRING(100),
                 allowNull: false,
                 field: "area",
             },

@@ -1,19 +1,18 @@
 import { 
-  getViewEnrollment,
-  // studentToTutor,
-  // studentInSubject, 
   addEnrollment, 
   getEnrollment, 
   getEnrollments, 
   updateEnrollment, 
-  deleteEnrollment } from "../services/enrollment.services.js";
+  deleteEnrollment,
+  getViewEnrollment,
+  getViewEnrollmentByUserId } from "../services/enrollment.services.js";
 
 class EnrollmentController {
 
 // PUT /protectedl/enrollment/add
 async createEnrollment(req,res,next){
 
-  const result = await addEnrollment(req.body.studentId, req.body.tutorId, req.body.subjectId, req.body.enrollmentDate, req.body.comments, req.body.latestScore, req.body.bookingTime)
+  const result = await addEnrollment(req.body.userId, req.body.tutorId, req.body.subjectId, req.body.enrollmentDate, req.body.comments, req.body.latestScore, req.body.bookingTime)
   
   res.status(result.status);
 
@@ -49,7 +48,7 @@ async updateEnrollment(req, res, next) {
     res.status(400);
     return res.json({ message: "Incorrect request data" });
   }
-  const result = await updateEnrollment( req.body.enrollmentId, req.body.studentId, req.body.tutorId, req.body.subjectId, req.body.enrollmentDate, req.body.comments, req.body.latestScore, req.body.bookingTime );    
+  const result = await updateEnrollment( req.body.enrollmentId, req.body.userId, req.body.tutorId, req.body.subjectId, req.body.enrollmentDate, req.body.comments, req.body.latestScore, req.body.bookingTime );    
   
   res.status(result.status);
   
@@ -70,6 +69,16 @@ async deleteEnrollment(req, res, next) {
 async getViewEnrollment(req, res, next) {
 
   const result = await getViewEnrollment();
+
+  res.status(result.status);
+
+  return res.json({ data: result.data, message: result.message });
+}
+
+// GET /general/viewEnrollment/:userId
+async getViewEnrollmentByUserId(req, res, next) {
+
+  const result = await getViewEnrollmentByUserId(req.params.userId);
 
   res.status(result.status);
 

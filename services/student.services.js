@@ -128,6 +128,27 @@ async function getViewStudent() {
     return result
   }
 
+  async function getViewStudentByUserId(userId) {
+
+    let result = {
+        message: null,
+        status: null,
+        data: null,
+    };
+
+    const studentView = await viewStudent.findAll({
+        where: {
+          userId: userId
+        }
+      });
+
+    result.data = studentView;
+    result.status = 200;
+    result.message = `Retrieve successful`;
+
+    return result
+}
+
 
 export {
    getStudent,
@@ -135,5 +156,6 @@ export {
    updateStudent,
    deleteStudent,
    addStudent,
-   getViewStudent
+   getViewStudent,
+   getViewStudentByUserId
 };

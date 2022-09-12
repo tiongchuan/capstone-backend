@@ -113,11 +113,11 @@ async function addTutor(userId, subjectId, name, experience, highestEducation, h
     result.status = 200;
     result.message = "Tutor added successfully";
 
-
     return result;
 }
 
 async function getViewTutor() {
+
     let result = {
       message: null,
       status: null,
@@ -129,8 +129,30 @@ async function getViewTutor() {
     result.data = tutorVIew;
     result.status = 200;
     result.message = `Retrieve successful`;
+
     return result
   }
+
+async function getViewTutorByUserId(userId) {
+
+    let result = {
+        message: null,
+        status: null,
+        data: null,
+    };
+
+    const tutorView = await viewTutor.findAll({
+        where: {
+          userId: userId
+        }
+      });
+
+    result.data = tutorView;
+    result.status = 200;
+    result.message = `Retrieve successful`;
+
+    return result
+}
 
 
 export {
@@ -139,5 +161,6 @@ export {
    updateTutor,
    deleteTutor,
    addTutor,
-   getViewTutor
+   getViewTutor,
+   getViewTutorByUserId
 };

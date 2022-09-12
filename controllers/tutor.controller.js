@@ -1,4 +1,4 @@
-import { getTutor, getTutors, updateTutor, deleteTutor, addTutor, getViewTutor } from "../services/tutor.services.js";
+import { getTutor, getTutors, updateTutor, deleteTutor, addTutor, getViewTutor, getViewTutorByUserId } from "../services/tutor.services.js";
 
 class TutorController {
 
@@ -59,6 +59,16 @@ class TutorController {
     async getViewTutor(req, res, next) {
 
       const result = await getViewTutor();
+
+      res.status(result.status);
+
+      return res.json({ data: result.data, message: result.message });
+    }
+
+     // GET /general/viewTutor/:userId
+     async getViewTutorByUserId(req, res, next) {
+
+      const result = await getViewTutorByUserId(req.params.userId);
 
       res.status(result.status);
 

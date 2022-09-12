@@ -51,6 +51,11 @@ export default function (sequelize) {
                 allowNull: false,
                 field: "username"
             },
+            email: {
+                type: DataTypes.STRING(50),
+                allowNull: false,
+                field: "email"
+            },
             subjectId: {
                 type: DataTypes.INTEGER,
                 allowNull: false,
