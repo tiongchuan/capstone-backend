@@ -35,14 +35,14 @@ class UserController {
         res.status(result.status);
     
         return res.json({ data: result.data, message: result.message });
-        } 
+    } 
 
     // Upload profile_img to server 
     async updateProfile_img(req, res, next) {
       try {
         const storage = multer.diskStorage({
             destination: function (req, file, cb) {
-                cb(null, 'Images');
+                cb(null, 'Images')
             },
             filename: function (req, file, cb) {
                 cb(null, Date.now() + path.extname(file.originalname));
@@ -50,7 +50,7 @@ class UserController {
         });
         const upload = multer({ 
           storage: storage,
-          limits: { fileSize: 1000000 },
+          limits: { fileSize: 2000000 },
           fileFilter: function (req, file, cb) {
             const filetypes = /jpeg|jpg|png|gif/
             const mimetype = filetypes.test(file.mimetype)
