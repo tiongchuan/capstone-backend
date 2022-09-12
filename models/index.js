@@ -13,8 +13,8 @@ import viewTutorModel from "./viewTutor.model.js";
 import viewStudentModel from "./viewStudent.model.js";
 
 //Heroku DB Connection Configuration
-const sequelize = new Sequelize("d6ssqv6hf7qldc", "rwxbhhdsdaevnd", "27842a83c6ad07b613d334a6a42a9093cd976ae0938c72292e3a96fc6d97b54f", {
-  host: "ec2-34-199-68-114.compute-1.amazonaws.com",
+const sequelize = new Sequelize("dajn7m3hs9l5mn", "ynrxmvvcmqxfdt", "cf0ce25b9b269f614b926913df358ddde75b24602a9526c904230ee7f658ca84", {
+  host: "ec2-44-209-57-4.compute-1.amazonaws.com",
   dialect: "postgres",
   dialectOptions: {
     ssl: {
@@ -47,9 +47,9 @@ async function testConnection() {
       // await sequelize.drop();
       // console.log("All tables dropped!");
 
-      // // Synchronizing all models at once
-      await sequelize.sync();
-      console.log("All models were synchronized successfully.");
+      // // // Synchronizing all models at once
+      // await sequelize.sync();
+      // console.log("All models were synchronized successfully.");
 
       return true;
 
