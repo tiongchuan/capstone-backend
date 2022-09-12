@@ -9,7 +9,7 @@ import cors from "cors";
 const app = express();
 
 app.use(cors());
-app.use('static', express.static('Images'));
+//app.use('static', express.static('Images'));
 
 // Set middleware to parses incoming JSON requests and puts the parsed data in req.body.
 app.use(express.json());
