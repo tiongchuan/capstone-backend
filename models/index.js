@@ -48,8 +48,8 @@ async function testConnection() {
       // console.log("All tables dropped!");
 
       // // Synchronizing all models at once
-      // await sequelize.sync();
-      // console.log("All models were synchronized successfully.");
+      await sequelize.sync();
+      console.log("All models were synchronized successfully.");
 
       return true;
 

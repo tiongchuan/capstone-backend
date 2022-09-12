@@ -96,37 +96,6 @@ async function updateProfileImage(userId, profile_img) {
   return result;
 }
 
-// update profile image
-// async function updateProfileImage(userId, profile_img) {
-
-//   let result = {  
-//       userId: null,
-//       username: null,
-//       message: null,
-//       status: null,
-//       data: null,
-//       profile_img: null
-//   };
-
-//   const user = await User.findByPk(userId);
-
-//   if (!user) {
-//       result.message = `User ID ${userId} is not found.`;
-//       result.status = 404;
-//       return result;
-//   }
-
-//   user.profile_img = profile_img;
-
-//   await user.save();
-
-//   result.data = user;
-//   result.status = 200;
-//   result.message = "Update successful";
-  
-//   return result;
-// }
-
 // get profile image 
 async function getProfileImage(userId) {
   let result = {
