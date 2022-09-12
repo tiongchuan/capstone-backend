@@ -67,14 +67,13 @@ async function getUsername(userId) {
   return result;
 }
 
-// update profile image
+// update profile image  
 async function updateProfileImage(userId, profile_img) {
 
   let result = {
-      userId: null,
-      username: null,
       message: null,
       status: null,
+      data: null,
       profile_img: null
   };
 
@@ -83,12 +82,14 @@ async function updateProfileImage(userId, profile_img) {
   if (!user) {
       result.message = `User ID ${userId} is not found.`;
       result.status = 404;
-      return result;  
+      return result;
   }
 
   user.profile_img = profile_img;
-  await user.save();
+  await user.update({ profile_img: profile_img });
+  user.save();
 
+  result.data = user;
   result.status = 200;
   result.message = "Update successful";
 
@@ -106,14 +107,16 @@ async function getProfileImage(userId) {
     profile_img: null
   };
   const user = await User.findByPk(userId);
+ 
   if (!user) {
     result.message = `User ID ${userId} is not found.`;
     result.status = 404;
     return result;
   }
-  result.data = user.profile_img;
+  result.data = user;
   result.status = 200;
   result.message = "Retrieve successful";
+
   return result;
 }
 
