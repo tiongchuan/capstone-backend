@@ -23,6 +23,7 @@ import viewStudentModel from "./viewStudent.model.js";
 //   }
 // });
 
+// Mia's Local DB Connection Configuration
 const sequelize = new Sequelize("capstone", "postgres", "abcd5566", {
   host: "localhost",
   dialect: "postgres"
@@ -47,8 +48,8 @@ async function testConnection() {
       // console.log("All tables dropped!");
 
       // // Synchronizing all models at once
-      // await sequelize.sync();
-      // console.log("All models were synchronized successfully.");
+      await sequelize.sync();
+      console.log("All models were synchronized successfully.");
 
       return true;
 
