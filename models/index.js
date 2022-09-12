@@ -13,21 +13,21 @@ import viewTutorModel from "./viewTutor.model.js";
 import viewStudentModel from "./viewStudent.model.js";
 
 //Heroku DB Connection Configuration
-// const sequelize = new Sequelize("d6ssqv6hf7qldc", "rwxbhhdsdaevnd", "27842a83c6ad07b613d334a6a42a9093cd976ae0938c72292e3a96fc6d97b54f", {
-//   host: "ec2-34-199-68-114.compute-1.amazonaws.com",
-//   dialect: "postgres",
-//   dialectOptions: {
-//     ssl: {
-//       rejectUnauthorized: false
-//     }
-//   }
-// });
+const sequelize = new Sequelize("d6ssqv6hf7qldc", "rwxbhhdsdaevnd", "27842a83c6ad07b613d334a6a42a9093cd976ae0938c72292e3a96fc6d97b54f", {
+  host: "ec2-34-199-68-114.compute-1.amazonaws.com",
+  dialect: "postgres",
+  dialectOptions: {
+    ssl: {
+      rejectUnauthorized: false
+    }
+  }
+});
 
 // Mia's Local DB Connection Configuration
-const sequelize = new Sequelize("capstone", "postgres", "abcd5566", {
-  host: "localhost",
-  dialect: "postgres"
-});
+// const sequelize = new Sequelize("capstone", "postgres", "abcd5566", {
+//   host: "localhost",
+//   dialect: "postgres"
+// });
 
 // // Local DB Connection
 // const sequelize = new Sequelize("student_db", "postgres", "N0op@psql", {
