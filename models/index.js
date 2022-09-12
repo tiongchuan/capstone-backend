@@ -23,6 +23,7 @@ const sequelize = new Sequelize("d6ssqv6hf7qldc", "rwxbhhdsdaevnd", "27842a83c6a
   }
 });
 
+// Mia's Local DB Connection Configuration
 // const sequelize = new Sequelize("capstone", "postgres", "abcd5566", {
 //   host: "localhost",
 //   dialect: "postgres"
