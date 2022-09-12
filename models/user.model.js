@@ -40,6 +40,11 @@ export default function (sequelize) {
         allowNull: true,
         field: "profile_img"
       }
+      // profile_img: {
+      //   type: DataTypes.BLOB("long"),
+      //   allowNull: true,
+      //   field: "profile_img"
+      // }
     },
     {
       sequelize,

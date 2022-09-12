@@ -7,7 +7,13 @@ import StudentController from "../controllers/student.controller.js";
 import UserController from "../controllers/user.controller.js";
 import SchoolController from '../controllers/school.controller.js';
 
+//my Code
+// import multer from 'multer'
+
 const router = Router();
+
+// My Code
+// const upload = multer({dest:'Images'})
 
 router.get("/protected", (req, res) => {
     return res.send("You have called a protected route");
@@ -32,6 +38,8 @@ router.post("/protected/school/update", schoolController.update);
 
 // Invoke updateProfile_img() in UserController based on the route by passing in the userId
 router.post("/protected/user/updateProfile_img/:userId", userController.updateProfile_img);
+//my code
+// router.post("/protected/user/updateProfile_img/:userId", upload.single('profile_img'),userController.updateProfile_img);
 
 // Invoke delete() in TutorController based on the route
 // router.delete("/protected/tutor/delete/:tutorId", isAuth, tutorController.delete);
