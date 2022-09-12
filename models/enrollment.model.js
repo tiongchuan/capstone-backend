@@ -11,10 +11,10 @@ export default function (sequelize) {
                 primaryKey: true,
                 autoIncrement: true,
             },
-            studentId: {
+            userId: {
                 type: DataTypes.INTEGER,
                 allowNull: false,
-                field: "student_id",
+                field: "user_id",
             },
             tutorId: {
                 type: DataTypes.INTEGER,

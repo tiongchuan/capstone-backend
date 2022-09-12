@@ -46,8 +46,11 @@ router.get("/general/schools", schoolController.retrieveSchools);
 // router.get("/general/tutor", enrollmentController.studentToTutor);
 
 router.get("/general/viewEnrollment", enrollmentController.getViewEnrollment);
+router.get("/general/viewEnrollment/:userId", enrollmentController.getViewEnrollmentByUserId);
 router.get("/general/viewTutor", tutorController.getViewTutor);
+router.get("/general/viewTutor/:userId", tutorController.getViewTutorByUserId);
 router.get("/general/viewStudent", studentController.getViewStudent);
+router.get("/general/viewStudent/:userId", studentController.getViewStudentByUserId);
 
 export default router;
 
