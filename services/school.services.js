@@ -16,7 +16,6 @@ async function getSchool(schoolId) {
         return result;
     }
   
-  
     result.data = school;
     result.status = 200;
     result.message = "Retrieve successful";
@@ -24,31 +23,31 @@ async function getSchool(schoolId) {
     return result;
   }
 
-  async function getSchools() {
+async function getSchools() {
 
     let result = {
         message: null,
         status: null,
         data: null,
     };
-  
+
     const school = await School.findAll();
-    
+
     result.data = school;
     result.status = 200;
     result.message = "Retrieve successful";
-  
-    return result;
-  }
 
-  async function updateSchool(schoolId, name, area, schoolCode, type, funding) {
+    return result;
+}
+
+async function updateSchool(schoolId, name, area, schoolCode, type, funding) {
 
     let result = {
         message: null,
         status: null,
         data: null,
     };
-    
+
     const school = await School.findByPk(schoolId);
 
     if (!school) {
@@ -114,8 +113,7 @@ async function addSchool(name, area, schoolCode, type, funding) {
     return result;
 }
 
-
-  export {
+export {
     getSchool,
     getSchools,
     updateSchool,

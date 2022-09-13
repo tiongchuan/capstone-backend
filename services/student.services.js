@@ -16,7 +16,6 @@ async function getStudent(studentId) {
         return result;
     }
 
-
     result.data = student;
     result.status = 200;
     result.message = "Retrieve successful";
@@ -70,7 +69,6 @@ async function updateStudent(studentId, userId, schoolId, name, parent, remarks)
 
     return result;
 }
-
 
 async function deleteStudent(studentId) {
 

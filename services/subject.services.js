@@ -16,7 +16,6 @@ async function getSubject(subjectId) {
         return result;
     }
 
-
     result.data = subject;
     result.status = 200;
     result.message = "Retrieve successful";

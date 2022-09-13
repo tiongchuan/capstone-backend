@@ -1,7 +1,6 @@
 
 import { Enrollment, viewEnrollment } from "../models/index.js";
 
-
 async function addEnrollment(userId, tutorId, subjectId, enrollmentDate, comments, latestScore, bookingTime) {
   let result = {
     message: null,
@@ -16,8 +15,6 @@ async function addEnrollment(userId, tutorId, subjectId, enrollmentDate, comment
   result.message = "New enrollment is registered sucessfully";
   return result;
 }
-
-
 
 async function getEnrollment(enrollmentId) {
   let result = {
@@ -139,8 +136,6 @@ async function getViewEnrollmentByUserId(userId) {
 
   return result
 }
-
-
 
 export {
   addEnrollment,

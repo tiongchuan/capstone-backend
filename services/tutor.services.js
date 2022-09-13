@@ -16,7 +16,6 @@ async function getTutor(tutorId) {
         return result;
     }
 
-
     result.data = tutor;
     result.status = 200;
     result.message = "Retrieve successful";
