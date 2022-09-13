@@ -30,10 +30,6 @@ router.get("/general/enrollment/:enrollmentId", enrollmentController.retrieveEnr
 router.get("/general/user/:userId", userController.retrieveUser);
 router.get("/general/school/:schoolId", schoolController.retrieveSchool);
 
-
-// Invoke retrieveProfile_img() in UserController based on the route by passing in the userId
-router.get("/general/user/profile_img/:userId", userController.retrieveProfile_img);
-
 // Invoke retrieveTutors() in TutorController based on the route
 router.get("/general/tutors", tutorController.retrieveTutors);
 router.get('/general/subjects', subjectController.retrieveSubjects)
@@ -42,15 +38,16 @@ router.get("/general/enrollments", enrollmentController.retrieveEnrollments);
 router.get("/general/users", userController.retrieveUsers);
 router.get("/general/schools", schoolController.retrieveSchools);
 
-// router.get("/general/class", enrollmentController.studentInSubject);
-// router.get("/general/tutor", enrollmentController.studentToTutor);
-
+// Invoke getViewEnrollment() in EnrollmentController based on the route
 router.get("/general/viewEnrollment", enrollmentController.getViewEnrollment);
 router.get("/general/viewEnrollment/:userId", enrollmentController.getViewEnrollmentByUserId);
 router.get("/general/viewTutor", tutorController.getViewTutor);
 router.get("/general/viewTutor/:userId", tutorController.getViewTutorByUserId);
 router.get("/general/viewStudent", studentController.getViewStudent);
 router.get("/general/viewStudent/:userId", studentController.getViewStudentByUserId);
+
+// Invoke retrieveProfile_img() in UserController based on the route by passing in the userId
+router.get("/general/user/profile_img/:userId", userController.retrieveProfile_img);
 
 export default router;
 
