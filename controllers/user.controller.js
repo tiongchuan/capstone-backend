@@ -59,12 +59,10 @@ class UserController {
 
     const result = await getUsers();
 
+    res.status(result.status);
 
-        const result = await getUsername(req.params.userId);    
-        res.status(result.status);
-    
-        return res.json({ data: result.data, message: result.message });
-    } 
+    return res.json({ data: result.data, status: result.status, message: result.message });
+  } 
 
     // Upload profile_img to server 
     async updateProfile_img(req, res, next) {
@@ -92,11 +90,13 @@ class UserController {
 
         res.status(result.status);
         return res.json({ data: result.data, message: result.message });
-      });
-    } catch (err) {
+      }
+      catch (err) {
       return res.status(500).json({ message: err.message });
     }
+
   }
+  
 
   // GET /general/user/profile_img/:userId
   async retrieveProfile_img(req, res, next) {
