@@ -64,40 +64,37 @@ class UserController {
     return res.json({ data: result.data, status: result.status, message: result.message });
   } 
 
-    // Upload profile_img to server 
-    async updateProfile_img(req, res, next) {
-      try {
-      // Upload profile_img to server
+  // Upload profile_img to server 
+  async updateProfile_img(req, res, next) {
+    try {
+    // Upload profile_img to server
 
-      upload(req, res, async function (err) {
-        if (err) {
-          return res.status(400).json({ message: err });
-        }
-        const result = await updateProfileImage(req.params.userId, req.file.filename);
-
-        res.status(result.status);
-        return res.json({ data: result.data, message: result.message });
-      });
-      } catch (err) {
-        return res.status(500).json({ message: err.message });
+    upload(req, res, async function (err) {
+      if (err) {
+        return res.status(400).json({ message: err });
       }
-    }
+      const result = await updateProfileImage(req.params.userId, req.file.filename);
 
-    // GET /general/user/profile_img/:userId
-    async retrieveProfile_img(req, res, next) {
-      try {
-        const result = await getProfileImage(req.params.userId);
-
-        res.status(result.status);
-        return res.json({ data: result.data, message: result.message });
-      }
-      catch (err) {
+      res.status(result.status);
+      return res.json({ data: result.data, message: result.message });
+    });
+    } catch (err) {
       return res.status(500).json({ message: err.message });
     }
+  }
 
+  // GET /general/user/profile_img/:userId
+  async retrieveProfile_img(req, res, next) {
+    try {
+      const result = await getProfileImage(req.params.userId);
+
+      res.status(result.status);
+      return res.json({ data: result.data, message: result.message });
+    } catch (err) {
+      return res.status(500).json({ message: err.message });
+    }
   }
   
-
   // GET /general/user/profile_img/:userId
   async retrieveProfile_img(req, res, next) {
     try {
