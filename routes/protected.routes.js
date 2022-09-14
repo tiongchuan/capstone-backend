@@ -30,9 +30,6 @@ router.post("/protected/student/update", studentController.update);
 router.post("/protected/enrollment/update", enrollmentController.updateEnrollment);
 router.post("/protected/school/update", schoolController.update);
 
-// Invoke updateProfile_img() in UserController based on the route by passing in the userId
-router.post("/protected/user/updateProfile_img/:userId", userController.updateProfile_img);
-
 // Invoke delete() in TutorController based on the route
 // router.delete("/protected/tutor/delete/:tutorId", isAuth, tutorController.delete);
 // router.delete("/protected/subject/delete/:subjectId", isAuth, subjectController.delete);
@@ -51,6 +48,7 @@ router.put("/protected/student/add", studentController.add);
 router.put("/protected/enrollment/add", enrollmentController.createEnrollment);
 router.put("/protected/school/add", schoolController.add);
 
-
+// Invoke updateProfile_img() in UserController based on the route by passing in the userId
+router.post("/protected/user/updateProfile_img/:userId", userController.updateProfile_img);
 
 export default router;

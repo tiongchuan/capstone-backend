@@ -42,31 +42,6 @@ async function getUsers() {
   return result;
 }
 
-async function getUsername(userId) {
-
-  let result = {
-      message: null,
-      status: null,
-      data: null,
-      profile_img: null
-  };
-
-  const user = await User.findByPk(userId);
-
-  if (!user) {
-      result.message = `User ID ${userId} is not found.`;
-      result.status = 404;
-      return result;
-  }
-
-  result.data = user.username;
-  result.profile_img = user.profile_img;
-  result.status = 200;
-  result.message = "Retrieve successful";
-
-  return result;
-}
-
 // update profile image  
 async function updateProfileImage(userId, profile_img) {
 
@@ -113,6 +88,7 @@ async function getProfileImage(userId) {
     result.status = 404;
     return result;
   }
+
   result.data = user;
   result.status = 200;
   result.message = "Retrieve successful";
@@ -123,7 +99,6 @@ async function getProfileImage(userId) {
 export {
   getUser,
   getUsers,
-  getUsername,
   updateProfileImage,
   getProfileImage
 }

@@ -29,7 +29,7 @@ const sequelize = new Sequelize("dajn7m3hs9l5mn", "ynrxmvvcmqxfdt", "cf0ce25b9b2
 //   dialect: "postgres"
 // });
 
-// // Local DB Connection
+// Local DB Connection
 // const sequelize = new Sequelize("student_db", "postgres", "N0op@psql", {
 //   host: "localhost",
 //   dialect: "postgres",
@@ -38,26 +38,26 @@ const sequelize = new Sequelize("dajn7m3hs9l5mn", "ynrxmvvcmqxfdt", "cf0ce25b9b2
 
 // Test connection function
 async function testConnection() {
-    try {
+  try {
 
-      await sequelize.authenticate()
-      console.log("Connection has been established successfully.");
+    await sequelize.authenticate()
+    console.log("Connection has been established successfully.");
 
-      // // Drop all tables
-      // await sequelize.drop();
-      // console.log("All tables dropped!");
+    // // Drop all tables
+    // await sequelize.drop();
+    // console.log("All tables dropped!");
 
-      // Synchronizing all models at once
-      // await sequelize.sync();
-      // console.log("All models were synchronized successfully.");
+    // // // Synchronizing all models at once
+    // await sequelize.sync();
+    // console.log("All models were synchronized successfully.");
 
-      return true;
-
-    } catch (error) {
-      console.error("Unable to connect to the database:", error);
-      return false;
-    }
+    return true;
+  } 
+  catch (error) {
+    console.error("Unable to connect to the database:", error);
+    return false;
   }
+}
 
 const School = schoolModel(sequelize);
 const Subject = subjectModel(sequelize);

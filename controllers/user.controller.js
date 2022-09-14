@@ -1,7 +1,6 @@
 import { 
   getUser, 
   getUsers, 
-  getUsername, 
   getProfileImage,
   updateProfileImage
 } from "../services/user.services.js";
@@ -45,26 +44,21 @@ function checkFileType(file, cb){
 
 class UserController {
 
-    // GET /general/user/:userId
-    async retrieveUser(req, res, next) {
+  // GET /general/user/:userId
+  async retrieveUser(req, res, next) {
 
-    const result = await getUser(req.params.userId);    
+    const result = await getUser(req.params.userId);
+       
     res.status(result.status);
 
-    return res.json({ data: result.data, message: result.message });
-    } 
+    return res.json({ data: result.data, status: result.status, message: result.message });
+  } 
 
-    // GET /general/users
-    async retrieveUsers(req, res, next) {
+  // GET /general/users
+  async retrieveUsers(req, res, next) {
 
-    const result = await getUsers();    
-    res.status(result.status);
+    const result = await getUsers();
 
-    return res.json({ data: result.data, message: result.message });
-    } 
-
-    // GET /general/user/username/:userId
-    async retrieveUsername(req, res, next) {
 
         const result = await getUsername(req.params.userId);    
         res.status(result.status);
@@ -76,11 +70,13 @@ class UserController {
     async updateProfile_img(req, res, next) {
       try {
       // Upload profile_img to server
+
       upload(req, res, async function (err) {
         if (err) {
           return res.status(400).json({ message: err });
         }
         const result = await updateProfileImage(req.params.userId, req.file.filename);
+
         res.status(result.status);
         return res.json({ data: result.data, message: result.message });
       });
@@ -93,56 +89,26 @@ class UserController {
     async retrieveProfile_img(req, res, next) {
       try {
         const result = await getProfileImage(req.params.userId);
+
         res.status(result.status);
         return res.json({ data: result.data, message: result.message });
-      } catch (err) {
-        return res.status(500).json({ message: err.message });
-      }
+      });
+    } catch (err) {
+      return res.status(500).json({ message: err.message });
     }
-  
-    // // GET /general/tutors
-    // async retrieveTutors(req, res, next) {
-  
-    //   const result = await getTutors();    
-    //   res.status(result.status);
-  
-    //   return res.json({ data: result.data, message: result.message });
-    // }  
-    
-    // // POST /protected/tutor/update
-    // async update(req, res, next) {
-
-    //   if (typeof req.body.tutorId !== "number") 
-    //   {
-    //     res.status(400);
-    //     return res.json({ message: "Incorrect request data" });
-    //   }
-  
-    //   const result = await updateTutor(req.body.tutorId, req.body.subjectId, req.body.name, req.body.experience, req.body.highestEducation, req.body.hourlyRate, req.body.rating, req.body.testimony);    
-    //   res.status(result.status);
-  
-  
-    //   return res.json({ data: result.data, message: result.message });
-    // }
-
-    //  // DELETE /protected/tutor/delete/:tutorId
-    //  async delete(req, res, next) {
-  
-    //     const result = await deleteTutor(req.params.tutorId);    
-    //     res.status(result.status);
-    
-    //     return res.json({ data: result.data, message: result.message });
-    //   }
-
-    //  // PUT /protected/tutor/add
-    // async add(req, res, next) {
-
-    //   const result = await addTutor(req.body.subjectId, req.body.name, req.body.experience, req.body.highestEducation, req.body.hourlyRate, req.body.rating, req.body.testimony);    
-    //   res.status(result.status);
-    
-    //   return res.json({ data: result.data, message: result.message }); 
-    // }
-
   }
+
+  // GET /general/user/profile_img/:userId
+  async retrieveProfile_img(req, res, next) {
+    try {
+      const result = await getProfileImage(req.params.userId);
+      res.status(result.status);
+      return res.json({ data: result.data, message: result.message });
+    } catch (err) {
+      return res.status(500).json({ message: err.message });
+    }
+  }
+
+}
 
 export default UserController;
