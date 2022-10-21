@@ -23,16 +23,16 @@ import viewStudentModel from "./viewStudent.model.js";
 //     }
 //   }
 
-//Heroku DB Connection Configuration
-const sequelize = new Sequelize("dajn7m3hs9l5mn", "ynrxmvvcmqxfdt", "cf0ce25b9b269f614b926913df358ddde75b24602a9526c904230ee7f658ca84", {
-  host: "ec2-44-209-57-4.compute-1.amazonaws.com",
-  dialect: "postgres",
-  dialectOptions: {
-    ssl: {
-      rejectUnauthorized: false
-    }
-  }
-});
+// //Heroku DB Connection Configuration
+// const sequelize = new Sequelize("dajn7m3hs9l5mn", "ynrxmvvcmqxfdt", "cf0ce25b9b269f614b926913df358ddde75b24602a9526c904230ee7f658ca84", {
+//   host: "ec2-44-209-57-4.compute-1.amazonaws.com",
+//   dialect: "postgres",
+//   dialectOptions: {
+//     ssl: {
+//       rejectUnauthorized: false
+//     }
+//   }
+// });
 
 // Mia's Local DB Connection Configuration
 // const sequelize = new Sequelize("capstone", "postgres", "abcd5566", {
@@ -40,10 +40,10 @@ const sequelize = new Sequelize("dajn7m3hs9l5mn", "ynrxmvvcmqxfdt", "cf0ce25b9b2
 //   dialect: "postgres"
 // });
 
-// const sequelize = new Sequelize("capstone_backend", "postgres", "123456", {
-//   host: "localhost",
-//   dialect: "postgres",
-// });
+const sequelize = new Sequelize("capstone_backend", "postgres", "123456", {
+  host: "localhost",
+  dialect: "postgres",
+});
 
 // // Local DB Connection
 // const sequelize = new Sequelize("student_db", "postgres", "N0op@psql", {
@@ -64,8 +64,8 @@ async function testConnection() {
       // console.log("All tables dropped!");
 
       // // // Synchronizing all models at once
-      // await sequelize.sync();
-      // console.log("All models were synchronized successfully.");
+      await sequelize.sync();
+      console.log("All models were synchronized successfully.");
 
       return true;
 
